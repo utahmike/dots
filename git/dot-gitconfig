@@ -1,0 +1,19 @@
+[user]
+	name = Michael Clark
+	email = michael.clark@beyondidentity.com
+
+[alias]
+    co = checkout
+    st = status
+    br = branch
+    last = log -1 HEAD
+    hist = "log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
+
+[credential]
+	helper = store
+
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
