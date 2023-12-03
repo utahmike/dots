@@ -28,7 +28,6 @@ export PATH=$PATH:$HOME/bin:$CARGO_HOME/bin:/usr/local/go/bin
 alias ls='ls -CF'
 alias ll='ls -lh'
 alias vim=nvim
-alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias ls='exa --icons  --color-scale --classify'
 alias gupdate='git fetch origin && git rebase --autostash origin/$(git_main_branch)'
 
