@@ -24,11 +24,10 @@ source $HOME/.cargo/env
 
 export PATH=$PATH:$HOME/bin:$CARGO_HOME/bin:/usr/local/go/bin
 
-
-alias ls='ls -CF'
-alias ll='ls -lh'
-alias vim=nvim
 alias ls='exa --icons  --color-scale --classify'
+alias ll="ls -lh"
+alias lla="exa -la"
+alias vim=nvim
 alias gupdate='git fetch origin && git rebase --autostash origin/$(git_main_branch)'
 
 export FZF_DEFAULT_COMMAND='rg --files'
@@ -61,12 +60,6 @@ cdpath=( \
     $ZPROOT/clients/core/kmc \
     $ZPROOT/clients/core/kmc/beyond \
 )
-
-install_utils() {
-    brew install bat
-    brew install exa
-    brew install git-delta
-}
 
 # Temporary bindings for work.
 export GPG=$ZPROOT/clients/gpg-bi/target/debug/gpg-bi
