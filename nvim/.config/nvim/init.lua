@@ -20,6 +20,9 @@ require("lazy").setup({
   "lewis6991/gitsigns.nvim",
   "savq/melange-nvim",
   "shaunsingh/nord.nvim",
+  "morhetz/gruvbox",
+  "aktersnurra/no-clown-fiesta.nvim",
+  "kvrohit/rasmus.nvim",
 
   "tpope/vim-fugitive",
   "tpope/vim-commentary",
@@ -440,5 +443,5 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- Set the preferred color scheme.
-vim.cmd [[colorscheme nord]]
+vim.cmd [[colorscheme melange]]
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format{async = false}]]
