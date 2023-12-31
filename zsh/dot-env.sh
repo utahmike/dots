@@ -52,7 +52,6 @@ setopt auto_cd
 cdpath=( \
     $HOME/dev \
     $HOME/dev/authn/authenticatorlibs \
-    $HOME/dev/authn/authenticatorlibs \
     $HOME/dev/authn/shared \
     $ZPROOT/.. \
     $ZPROOT/client \
