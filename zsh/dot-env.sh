@@ -24,11 +24,12 @@ source $HOME/.cargo/env
 
 export PATH=$PATH:$HOME/bin:$CARGO_HOME/bin:/usr/local/go/bin
 
-alias ls='exa --icons  --color-scale --classify'
+alias ls='lsd'
 alias ll="ls -lh"
-alias lla="exa -la"
+alias lla="ls -la"
 alias vim=nvim
 alias gupdate='git fetch origin && git rebase --autostash origin/$(git_main_branch)'
+alias rg='rg --no-heading'
 
 export FZF_DEFAULT_COMMAND='rg --files'
 export VISUAL=vim
