@@ -26,6 +26,19 @@ require("lazy").setup({
   "mechatroner/rainbow_csv",
   "chrisbra/csv.vim",
 
+  {
+    "vimwiki/vimwiki",
+    init = function()
+      vim.g.vimwiki_list = {
+        {
+          path = '~/Documents/aspengrove',
+          syntax = 'default',
+          ext = '.md',
+        },
+      }
+    end,
+  },
+
   "tpope/vim-fugitive",
   "tpope/vim-commentary",
   "nvim-tree/nvim-tree.lua",
@@ -68,6 +81,7 @@ require("lazy").setup({
 })
 
 require 'luasnip'.setup()
+
 
 local cmp = require 'cmp'
 cmp.setup({
@@ -380,6 +394,13 @@ lspconfig.pyright.setup {}
 lspconfig.taplo.setup {}
 
 require 'lspconfig'.lua_ls.setup {
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim" },
+      },
+    },
+  },
   on_init = function(client)
     local path = client.workspace_folders[1].name
     if not vim.loop.fs_stat(path .. '/.luarc.json') and not vim.loop.fs_stat(path .. '/.luarc.jsonc') then
@@ -487,3 +508,19 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- Set the preferred color scheme.
 vim.cmd [[colorscheme melange]]
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format{async = false}]]
+
+
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+  pattern = "*.md",
+  callback = function()
+    vim.opt_local.wrap = true
+    vim.opt_local.linebreak = true
+    vim.opt_local.spell = true
+    vim.opt_local.cursorline = false
+    vim.opt_local.cursorcolumn = false
+    vim.keymap.set("n", "j", "gj", { buffer = true })
+    vim.keymap.set("n", "k", "gk", { buffer = true })
+    vim.keymap.set("n", "0", "g0", { buffer = true })
+    vim.keymap.set("n", "$", "g$", { buffer = true })
+  end
+})
