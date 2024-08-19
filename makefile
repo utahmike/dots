@@ -1,9 +1,7 @@
 install:
-	stow -t ~ --dotfiles zsh
-	stow -t ~ --dotfiles git
-	stow -t ~ --dotfiles nvim
+	stow -t ~/.config config
+	stow -t ~ --dotfiles home
 
 clean:
-	stow -t ~ --delete --dotfiles zsh
-	stow -t ~ --delete --dotfiles git
-	stow -t ~ --delete --dotfiles nvim
+	stow -t ~/.config --delete config
+	stow -t ~ --delete --dotfiles home
