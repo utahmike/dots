@@ -29,6 +29,7 @@ alias ll="ls -lh"
 alias lla="ls -la"
 alias vim=nvim
 alias gupdate='git fetch origin && git rebase --autostash origin/$(git_main_branch)'
+alias awsl='aws ecr get-login-password --profile development --region us-west-2 | docker login --username AWS --password-stdin 273119442198.dkr.ecr.us-west-2.amazonaws.com'
 alias rg='rg --no-heading'
 
 export FZF_DEFAULT_COMMAND='rg --files'
