@@ -45,8 +45,12 @@ echo "Loading Beyond Identity Environment"
 export ZEROPW=$GOPATH/src/gitlab.com/zeropw/zero
 export PATH=$PATH:$GOPATH/bin
 export PROTOC=`which protoc`
+export GOPROXY=https://packages.beyondidentity.com/GQ3JMgjVwTYQPLZw/go-packages/go/,https://proxy.golang.org,direct
+export GONOSUMDB=go.beyondidentity.com/*
+export CARGO_REGISTRY_AUTH_URL="$(cat $HOME/.git-credentials)"
 
 export ZPROOT=$ZEROPW # I prefer this form to the default.
+
 
 source $ZEROPW/devel/apple/zpw-functions.sh
 
