@@ -20,8 +20,8 @@ return {
 				layout_config = {
 					horizontal = {
 						prompt_position = "top",
-						preview_width = 0.70,
-						results_width = 0.30,
+						preview_width = 0.80,
+						results_width = 0.20,
 					},
 					vertical = {
 						prompt_position = "top",
@@ -49,6 +49,7 @@ return {
 		local keymap = vim.keymap -- for conciseness
 
 		keymap.set("n", "<C-p>", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
+		keymap.set("n", "<C-s>", "<cmd>Telescope lsp_workspace_symbols<cr>", { desc = "Fuzzy find files in cwd" })
 		keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
 		keymap.set("n", "<leader>/", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
 		keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
