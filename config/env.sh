@@ -21,7 +21,10 @@ case `uname` in
 esac
 
 source $HOME/.cargo/env
-source $HOME/.credentials.sh
+
+if [ -f $HOME/.credentials.sh ]; then
+  source $HOME/.credentials.sh
+fi
 
 export PATH=$PATH:$HOME/bin:$CARGO_HOME/bin:/usr/local/go/bin
 
