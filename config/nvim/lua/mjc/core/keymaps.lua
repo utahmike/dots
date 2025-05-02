@@ -18,3 +18,5 @@ keymap.set("n", "<Leader>1", ":only<CR>")
 -- installed.
 keymap.set("n", "<leader>gs", ":Git<cr>")
 keymap.set("n", "<leader>gb", ":Git blame<cr>")
+
+keymap.set("n", "<leader>T", ":Trouble diagnostics<cr>")
