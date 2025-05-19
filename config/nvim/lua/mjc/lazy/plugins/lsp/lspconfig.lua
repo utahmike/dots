@@ -87,14 +87,17 @@ return {
 				})
 			end,
 			["rust_analyzer"] = function()
-				lspconfig["rust_analyzer"].setup({
+				lspconfig.rust_analyzer.setup({
+					capabilities = capabilities,
 					settings = {
 						["rust-analyzer"] = {
 							diagnostics = {
-								enable = false,
+								enable = true,
+								workspace = false,
 							},
 							check = {
 								command = "clippy",
+								extraArgs = { "--all-targets", "--all-features" }, -- no --workspace
 							},
 						},
 					},
