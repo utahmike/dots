@@ -1026,6 +1026,14 @@ require("lazy").setup({
 			-- Like many other themes, this one has different styles, and you could load
 			-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
 			vim.cmd.colorscheme("darkearth")
+
+			-- Override background colors to match terminal theme with high contrast
+			vim.api.nvim_set_hl(0, "Normal", { bg = "#1A1A1A", fg = "#D4C5A9" })
+			vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#1A1A1A", fg = "#D4C5A9" })
+			vim.api.nvim_set_hl(0, "NormalNC", { bg = "#1A1A1A", fg = "#D4C5A9" })
+			vim.api.nvim_set_hl(0, "SignColumn", { bg = "#1A1A1A" })
+			vim.api.nvim_set_hl(0, "LineNr", { bg = "#1A1A1A", fg = "#4A4A4A" })
+			vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "#1A1A1A", fg = "#E6B450" })
 		end,
 	},
 
