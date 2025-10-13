@@ -25,6 +25,11 @@ if [ -f $HOME/.credentials.sh ]; then
     source $HOME/.credentials.sh
 fi
 
+# Source local environment overrides
+if [ -f ~/.config/env.local.sh ]; then
+    source ~/.config/env.local.sh
+fi
+
 export PATH=$PATH:$HOME/bin:$CARGO_HOME/bin:/usr/local/go/bin
 
 alias ls='lsd'
@@ -40,37 +45,3 @@ export FZF_DEFAULT_COMMAND='rg --files'
 export VISUAL=vim
 export EDITOR="$VISUAL"
 export GIT_EDITOR="$VISUAL"
-
-# Bring in the zeropw environment.
-export GOPATH=$HOME/dev/go
-export OPTIMIZELY_SDK_KEY_DEVEL=UYioHayz4pqa2EXuLyRgP9
-
-echo "Loading Beyond Identity Environment"
-export ZEROPW=$GOPATH/src/gitlab.com/zeropw/zero
-export PATH=$PATH:$GOPATH/bin
-export PROTOC=$(which protoc)
-export GOPROXY=https://packages.beyondidentity.com/GQ3JMgjVwTYQPLZw/go-packages/go/,https://proxy.golang.org,direct
-export GONOSUMDB=go.beyondidentity.com/*
-
-export ZPROOT=$ZEROPW # I prefer this form to the default.
-
-source $ZEROPW/devel/apple/zpw-functions.sh
-
-setopt auto_cd
-cdpath=(
-    $HOME/dev
-    $HOME/dev/authn/authenticatorlibs
-    $HOME/dev/authn/shared
-    $ZPROOT/..
-    $ZPROOT/client
-    $ZPROOT/clients/core
-    $ZPROOT/clients/core/kmc
-    $ZPROOT/clients/core/kmc/beyond
-)
-
-# Temporary bindings for work.
-export GPG=$ZPROOT/clients/gpg-bi/target/debug/gpg-bi
-alias gpgs='$GPG --status-fd=2 -bsau'
-function gpgv {
-    $GPG --keyid-format=long --status-fd=1 $1 -
-}

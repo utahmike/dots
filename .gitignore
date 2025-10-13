@@ -1,2 +1,18 @@
-lazy-lock.json
+# Backups
+backups/
+
+# Local configuration
+config/env.local.sh
+.credentials.sh
+
+# OS files
 .DS_Store
+
+# Editor
+*.swp
+*.swo
+*~
+
+# Neovim
+lazy-lock.json
+config/nvim/lazy-lock.json
