@@ -63,3 +63,6 @@ export FZF_DEFAULT_COMMAND='rg --files'
 export VISUAL=vim
 export EDITOR="$VISUAL"
 export GIT_EDITOR="$VISUAL"
+
+# Set up CDPATH for easier navigation (zsh/bash)
+cdpath=($HOME/dev)
