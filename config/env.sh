@@ -7,16 +7,34 @@ export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 
 case $(uname) in
 Darwin)
-    # alias more=bat
-    export PATH=/opt/homebrew/bin:$PATH
-    # Add all private keys for which we have public keys in the .ssh directory.
-    for file in $HOME/.ssh/*.pub; do ssh-add -K "${file%.*}" >&/dev/null; done
+    # macOS specific configuration
+    # Check for Homebrew in multiple locations (Apple Silicon vs Intel)
+    if [ -x /opt/homebrew/bin/brew ]; then
+        export PATH=/opt/homebrew/bin:$PATH
+    elif [ -x /usr/local/bin/brew ]; then
+        export PATH=/usr/local/bin:$PATH
+    fi
+
+    # Add all private keys for which we have public keys in the .ssh directory
+    for file in $HOME/.ssh/*.pub; do
+        [ -f "$file" ] && ssh-add -K "${file%.*}" >&/dev/null 2>&1
+    done
 
     alias linux_dev='docker run --rm --mount source=mjc-dev,target=/home/mjc -it dev:mjc'
     ;;
-    # Linux)
-    # alias more=batcat
-    # ;;
+Linux)
+    # Linux specific configuration
+    if [ -f /etc/debian_version ]; then
+        # Debian/Ubuntu - bat is installed as batcat
+        command -v batcat >/dev/null 2>&1 && alias bat='batcat'
+    fi
+
+    # Standard Linux paths
+    export PATH=/usr/local/bin:$PATH
+    ;;
+*)
+    echo "Warning: Unknown OS ($(uname)) - some configurations may not work" >&2
+    ;;
 esac
 
 source $HOME/.cargo/env

@@ -13,18 +13,22 @@ config.font_size = 16.0
 
 config.font = wezterm.font("Hack Nerd Font Mono", { weight = "Bold" })
 
-config.window_background_image = "/Users/mjc/Desktop/untitled-1.tif"
-config.window_background_image_hsb = {
-	-- Darken the background image by reducing it to 1/3rd
-	brightness = 0.05,
+-- Use portable path for background image
+local home = os.getenv("HOME")
+local config_dir = home .. "/.config/wezterm"
+local bg_image = config_dir .. "/background.tif"
 
-	-- You can adjust the hue by scaling its value.
-	-- a multiplier of 1.0 leaves the value unchanged.
-	hue = 1.0,
-
-	-- You can adjust the saturation also.
-	saturation = 1.0,
-}
+-- Only set background if file exists
+local file = io.open(bg_image, "r")
+if file ~= nil then
+	io.close(file)
+	config.window_background_image = bg_image
+	config.window_background_image_hsb = {
+		brightness = 0.05,
+		hue = 1.0,
+		saturation = 1.0,
+	}
+end
 
 -- and finally, return the configuration to wezterm
 return config
