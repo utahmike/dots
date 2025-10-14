@@ -48,6 +48,16 @@ if [ -f ~/.config/env.local.sh ]; then
     source ~/.config/env.local.sh
 fi
 
+# Tmux configuration
+export TMUX_TMPDIR="$HOME/.tmux/tmp"
+mkdir -p "$TMUX_TMPDIR"
+
+# Auto-start tmux (optional, commented by default)
+# Uncomment the following lines to automatically start tmux when opening a terminal
+# if command -v tmux &> /dev/null && [ -z "$TMUX" ] && [ -z "$SSH_TTY" ]; then
+#     tmux attach -t default || tmux new -s default
+# fi
+
 export PATH=$PATH:$HOME/bin:$CARGO_HOME/bin:/usr/local/go/bin
 
 alias ls='lsd'

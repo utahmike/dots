@@ -6,6 +6,7 @@ Personal configuration files for macOS/Linux development environment, managed wi
 
 This repository manages configuration for:
 - **Neovim** - Text editor (Kickstart-based config)
+- **Tmux** - Terminal multiplexer with seamless nvim integration
 - **Alacritty** - Terminal emulator
 - **WezTerm** - Alternative terminal emulator
 - **Git** - Version control settings
@@ -21,19 +22,20 @@ This repository manages configuration for:
 - shellcheck - Shell script linting
 - luacheck - Lua linting
 - Neovim >= 0.10
+- Tmux >= 3.0 - Terminal multiplexer
 - Nerd Font (recommended: Hack Nerd Font)
 
 ### Installation
 
 #### macOS
 ```bash
-brew install stow git
+brew install stow git tmux
 brew install --cask font-hack-nerd-font
 ```
 
 #### Linux (Ubuntu/Debian)
 ```bash
-sudo apt install stow git
+sudo apt install stow git tmux
 ```
 
 ## Quick Start
@@ -103,6 +105,7 @@ sudo apt install stow git
 ├── config/          # ~/.config/* files
 │   ├── alacritty/   # Terminal emulator config
 │   ├── nvim/        # Neovim configuration
+│   ├── tmux/        # Tmux configuration
 │   ├── wezterm/     # WezTerm config
 │   └── env.sh       # Shell environment
 ├── home/            # ~/* files (use dot- prefix for dotfiles)
@@ -165,6 +168,56 @@ Based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim).
 - `<Space>ee` - Toggle file tree (Oil)
 
 See `:help` in Neovim for complete documentation.
+
+## Tmux Configuration
+
+Terminal multiplexer with darkearth colorscheme and seamless nvim integration.
+
+### Features
+- **Seamless Navigation**: `C-h/j/k/l` navigates both nvim splits and tmux panes
+- **Darkearth Colors**: Status bar and borders match nvim theme (#1A1A1A background)
+- **Vi-mode**: Copy mode uses vi keybindings
+- **Mouse Support**: Enabled for pane resizing and selection
+- **Better Keybindings**: `C-a` prefix, `|` for vertical split, `-` for horizontal split
+
+### Key Bindings
+- `C-a` - Prefix (instead of default `C-b`)
+- `C-a |` - Split pane vertically
+- `C-a -` - Split pane horizontally
+- `C-h/j/k/l` - Navigate between panes and nvim windows seamlessly
+- `C-a r` - Reload tmux config
+- `C-a [` - Enter copy mode (use vi keys, `v` to select, `y` to yank)
+
+### Navigation Between Nvim and Tmux
+The vim-tmux-navigator plugin provides seamless navigation:
+- When in nvim, `C-h/j/k/l` moves between nvim splits
+- At the edge of a split, continues to adjacent tmux pane
+- When not in nvim, `C-h/j/k/l` navigates tmux panes
+- Use `C-a C-l` to clear the screen (since `C-l` is used for navigation)
+
+### True Color Support
+Tmux is configured for true color (24-bit) support. Requires a compatible terminal:
+- ✅ Alacritty (built-in)
+- ✅ WezTerm (built-in)
+- ✅ iTerm2 (v3.0+)
+- ⚠️  Terminal.app (limited support)
+
+To verify true color support:
+```bash
+printf "\x1b[38;2;255;100;0mTRUECOLOR\x1b[0m\n"
+```
+You should see "TRUECOLOR" in orange.
+
+### Optional: Tmux Plugin Manager (TPM)
+Configuration includes commented TPM setup for advanced plugins. To enable:
+
+```bash
+# Install TPM
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# Uncomment the TPM section in config/tmux/tmux.conf
+# Press C-a I (capital I) to install plugins
+```
 
 ## Troubleshooting
 

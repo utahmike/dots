@@ -199,11 +199,9 @@ vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" }
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
 --
---  See `:help wincmd` for a list of all window commands
-vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+-- Navigation keybinds are provided by vim-tmux-navigator plugin (see plugin config below)
+-- This enables seamless navigation between nvim windows and tmux panes
+-- See: https://github.com/christoomey/vim-tmux-navigator
 
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
 -- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
@@ -566,6 +564,24 @@ require("lazy").setup({
 	},
 
 	"tpope/vim-fugitive",
+
+	-- Seamless navigation between tmux panes and nvim splits
+	{
+		"christoomey/vim-tmux-navigator",
+		cmd = {
+			"TmuxNavigateLeft",
+			"TmuxNavigateDown",
+			"TmuxNavigateUp",
+			"TmuxNavigateRight",
+			"TmuxNavigatePrevious",
+		},
+		keys = {
+			{ "<C-h>", "<cmd><C-U>TmuxNavigateLeft<cr>", desc = "Navigate left (nvim/tmux)" },
+			{ "<C-j>", "<cmd><C-U>TmuxNavigateDown<cr>", desc = "Navigate down (nvim/tmux)" },
+			{ "<C-k>", "<cmd><C-U>TmuxNavigateUp<cr>", desc = "Navigate up (nvim/tmux)" },
+			{ "<C-l>", "<cmd><C-U>TmuxNavigateRight<cr>", desc = "Navigate right (nvim/tmux)" },
+		},
+	},
 
 	{
 		"nvim-tree/nvim-tree.lua",
