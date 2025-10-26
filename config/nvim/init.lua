@@ -1030,26 +1030,15 @@ require("lazy").setup({
 		},
 	},
 
-	{ -- You can easily change to a different colorscheme.
-		-- Change the name of the colorscheme plugin below, and then
-		-- change the command in the config to whatever the name of that colorscheme is.
-		--
-		-- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-		"ptdewey/darkearth-nvim",
+	{ -- Autumn Minimal - Custom colorscheme following Nikita Prokopov's syntax highlighting principles
+		-- Minimal, strategic colors inspired by autumn landscape
+		-- Only highlights: strings, comments, definitions, constants
+		-- See: https://tonsky.me/blog/syntax-highlighting/
+		dir = vim.fn.stdpath("config") .. "/colors",
 		priority = 1000, -- Make sure to load this before all the other start plugins.
 		config = function()
 			-- Load the colorscheme here.
-			-- Like many other themes, this one has different styles, and you could load
-			-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-			vim.cmd.colorscheme("darkearth")
-
-			-- Override background colors to match terminal theme with high contrast
-			vim.api.nvim_set_hl(0, "Normal", { bg = "#1A1A1A", fg = "#D4C5A9" })
-			vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#1A1A1A", fg = "#D4C5A9" })
-			vim.api.nvim_set_hl(0, "NormalNC", { bg = "#1A1A1A", fg = "#D4C5A9" })
-			vim.api.nvim_set_hl(0, "SignColumn", { bg = "#1A1A1A" })
-			vim.api.nvim_set_hl(0, "LineNr", { bg = "#1A1A1A", fg = "#4A4A4A" })
-			vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "#1A1A1A", fg = "#E6B450" })
+			vim.cmd.colorscheme("autumn-minimal")
 		end,
 	},
 

@@ -6,34 +6,64 @@ local config = wezterm.config_builder()
 
 -- This is where you actually apply your config choices
 
--- Custom darkearth color scheme to match nvim
+-- Autumn Minimal color scheme
+-- Following Nikita Prokopov's syntax highlighting principles
+-- Matches neovim autumn-minimal theme
+-- See: https://tonsky.me/blog/syntax-highlighting/
 config.colors = {
-	foreground = "#D4C5A9",
-	background = "#1A1A1A",
-	cursor_bg = "#D4C5A9",
-	cursor_fg = "#1A1A1A",
-	cursor_border = "#D4C5A9",
-	selection_bg = "#3A3A3A",
-	selection_fg = "#D4C5A9",
+	foreground = "#d4c5a9",  -- Warm tan (dried grass)
+	background = "#1a1814",  -- Dark brown-black (tree bark/shadows)
+	cursor_bg = "#d4c5a9",
+	cursor_fg = "#1a1814",
+	cursor_border = "#d4c5a9",
+	selection_bg = "#4a4034",
+	selection_fg = "#d4c5a9",
+
+	-- ANSI colors: strategic palette from autumn landscape
 	ansi = {
-		"#2A2A2A", -- black
-		"#D08770", -- red
-		"#A3BE8C", -- green
-		"#E6B450", -- yellow
-		"#7FADD6", -- blue
-		"#C59FC9", -- magenta
-		"#83B6AF", -- cyan
-		"#D4C5A9", -- white
+		"#1a1814", -- black (background)
+		"#c97a4a", -- red (rust orange - for errors)
+		"#9db668", -- green (lime - for success/definitions)
+		"#e8b339", -- yellow (golden - for strings/warnings)
+		"#7a9fb5", -- blue (muted blue-gray from sky)
+		"#b08968", -- magenta (brown-purple, subdued)
+		"#8faa8f", -- cyan (sage green)
+		"#d4c5a9", -- white (warm tan foreground)
 	},
 	brights = {
-		"#4A4A4A", -- bright black
-		"#E89580", -- bright red
-		"#B3CE9C", -- bright green
-		"#F6C460", -- bright yellow
-		"#8FBDE6", -- bright blue
-		"#D5AFD9", -- bright magenta
-		"#93C6BF", -- bright cyan
-		"#E4D5B9", -- bright white
+		"#4a4034", -- bright black (line numbers)
+		"#e67e22", -- bright red (bright orange - for comments!)
+		"#b8d98a", -- bright green (brighter lime)
+		"#f0c952", -- bright yellow (brighter golden)
+		"#8fb5d1", -- bright blue (brighter blue-gray)
+		"#c9a87a", -- bright magenta (lighter brown)
+		"#a8c4a8", -- bright cyan (brighter sage)
+		"#e8dcc0", -- bright white (lighter tan)
+	},
+
+	-- Tab bar colors
+	tab_bar = {
+		background = "#0f0d0b",
+		active_tab = {
+			bg_color = "#1a1814",
+			fg_color = "#d4c5a9",
+		},
+		inactive_tab = {
+			bg_color = "#0f0d0b",
+			fg_color = "#6b5d4f",
+		},
+		inactive_tab_hover = {
+			bg_color = "#221f1a",
+			fg_color = "#9a8873",
+		},
+		new_tab = {
+			bg_color = "#0f0d0b",
+			fg_color = "#6b5d4f",
+		},
+		new_tab_hover = {
+			bg_color = "#221f1a",
+			fg_color = "#9a8873",
+		},
 	},
 }
 config.font_size = 16.0
