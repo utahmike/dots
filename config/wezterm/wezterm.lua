@@ -68,7 +68,7 @@ config.colors = {
 }
 config.font_size = 16.0
 
-config.font = wezterm.font("Hack Nerd Font Mono", { weight = "Bold" })
+config.font = wezterm.font("Hack Nerd Font Mono")
 
 -- Use portable path for background image
 local home = os.getenv("HOME")
