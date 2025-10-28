@@ -182,9 +182,8 @@ hi('@tag.delimiter', { fg = colors.dimmed })
 
 -- Markdown
 hi('@markup.heading', { fg = colors.definition, gui = 'bold' })
-hi('@markup.strong', { fg = '#c9a87a', gui = 'bold' })  -- Warm brown - subtle emphasis
-hi('@markup.italic', { fg = '#b08968', gui = 'italic' })  -- Muted brown-purple - softer
-hi('@markup.strong.italic', { fg = '#c97a4a', gui = 'bold,italic' })  -- Rust orange - most prominent
+hi('@markup.strong', { gui = 'bold' })
+hi('@markup.italic', { gui = 'italic' })
 hi('@markup.link', { fg = colors.string })
 hi('@markup.link.url', { fg = colors.string })
 hi('@markup.raw', { fg = colors.constant })
