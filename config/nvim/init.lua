@@ -223,6 +223,29 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+-- Markdown soft-wrap with display-line movement
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "markdown",
+	desc = "Enable soft-wrap and display-line movement for markdown",
+	group = vim.api.nvim_create_augroup("markdown-wrap", { clear = true }),
+	callback = function()
+		-- Enable soft-wrapping
+		vim.opt_local.wrap = true
+		vim.opt_local.linebreak = true
+
+		-- Swap movement keys: j/k/0/$ move by display lines, gj/gk/g0/g$ move by actual lines
+		local opts = { buffer = true, silent = true }
+		vim.keymap.set({ "n", "v" }, "j", "gj", opts)
+		vim.keymap.set({ "n", "v" }, "k", "gk", opts)
+		vim.keymap.set({ "n", "v" }, "0", "g0", opts)
+		vim.keymap.set({ "n", "v" }, "$", "g$", opts)
+		vim.keymap.set({ "n", "v" }, "gj", "j", opts)
+		vim.keymap.set({ "n", "v" }, "gk", "k", opts)
+		vim.keymap.set({ "n", "v" }, "g0", "0", opts)
+		vim.keymap.set({ "n", "v" }, "g$", "$", opts)
+	end,
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
