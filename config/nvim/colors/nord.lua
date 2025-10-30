@@ -1,6 +1,6 @@
--- autumn-minimal.lua
--- A minimal syntax highlighting scheme following Nikita Prokopov's principles
--- Inspired by autumn landscape colors
+-- nord.lua
+-- Nord color scheme - Arctic, north-bluish color palette
+-- See: https://www.nordtheme.com/
 -- "If everything is highlighted, nothing is highlighted"
 
 vim.cmd('highlight clear')
@@ -8,44 +8,68 @@ if vim.fn.exists('syntax_on') then
   vim.cmd('syntax reset')
 end
 
-vim.g.colors_name = 'autumn-minimal'
+vim.g.colors_name = 'nord'
 vim.o.background = 'dark'
 
--- Color Palette from Autumn Photo
+-- Nord Color Palette
 local colors = {
-  -- Base colors
-  bg = '#1a1814',           -- Dark brown-black (tree bark/shadows)
-  fg = '#d4c5a9',           -- Warm tan (dried grass) - default text
-  subtle = '#6b5d4f',       -- Muted brown (for keywords/punctuation)
-  dimmed = '#9a8873',       -- Slightly dimmed (for operators)
+  -- Polar Night (dark backgrounds)
+  nord0 = '#2E3440',        -- Darkest background
+  nord1 = '#3B4252',        -- Dark background
+  nord2 = '#434C5E',        -- Medium background / selection
+  nord3 = '#4C566A',        -- Light background / comments
 
-  -- Strategic accent colors (only 4!)
-  string = '#e8b339',       -- Golden yellow (autumn leaves)
-  comment = '#e67e22',      -- Bright orange (fall foliage) - NOT grey!
-  definition = '#9db668',   -- Lime green (bright leaves) - for function defs
-  constant = '#c97a4a',     -- Rust orange (autumn rust) - for constants/numbers
+  -- Snow Storm (light foregrounds)
+  nord4 = '#D8DEE9',        -- Main foreground
+  nord5 = '#E5E9F0',        -- Lighter foreground
+  nord6 = '#ECEFF4',        -- Lightest foreground
+
+  -- Frost (blues/cyans)
+  nord7 = '#8FBCBB',        -- Cyan
+  nord8 = '#88C0D0',        -- Bright cyan
+  nord9 = '#81A1C1',        -- Blue
+  nord10 = '#5E81AC',       -- Dark blue
+
+  -- Aurora (accent colors)
+  nord11 = '#BF616A',       -- Red
+  nord12 = '#D08770',       -- Orange
+  nord13 = '#EBCB8B',       -- Yellow
+  nord14 = '#A3BE8C',       -- Green
+  nord15 = '#B48EAD',       -- Purple
+
+  -- Mapped colors for syntax
+  bg = '#2E3440',           -- nord0
+  fg = '#D8DEE9',           -- nord4
+  subtle = '#4C566A',       -- nord3
+  dimmed = '#81A1C1',       -- nord9
+
+  -- Strategic accent colors
+  string = '#EBCB8B',       -- nord13 (yellow)
+  comment = '#616E88',      -- Between nord3 and nord4
+  definition = '#88C0D0',   -- nord8 (bright cyan)
+  constant = '#B48EAD',     -- nord15 (purple)
 
   -- UI colors
-  cursor_line = '#221f1a',
-  selection = '#3d3529',
-  visual = '#4a4034',
-  line_nr = '#4a4034',
-  cursor_line_nr = '#9a8873',
-  sign_column = '#1a1814',
+  cursor_line = '#3B4252',  -- nord1
+  selection = '#434C5E',    -- nord2
+  visual = '#434C5E',       -- nord2
+  line_nr = '#4C566A',      -- nord3
+  cursor_line_nr = '#D8DEE9', -- nord4
+  sign_column = '#2E3440',  -- nord0
 
   -- Status/UI
-  status_bg = '#0f0d0b',
-  pmenu_bg = '#221f1a',
-  pmenu_sel = '#3d3529',
+  status_bg = '#3B4252',    -- nord1
+  pmenu_bg = '#3B4252',     -- nord1
+  pmenu_sel = '#434C5E',    -- nord2
 
   -- Diagnostic/Git
-  error = '#c97a4a',
-  warning = '#e8b339',
-  info = '#7a9fb5',
-  hint = '#9db668',
-  add = '#9db668',
-  change = '#e8b339',
-  delete = '#c97a4a',
+  error = '#BF616A',        -- nord11 (red)
+  warning = '#EBCB8B',      -- nord13 (yellow)
+  info = '#81A1C1',         -- nord9 (blue)
+  hint = '#A3BE8C',         -- nord14 (green)
+  add = '#A3BE8C',          -- nord14 (green)
+  change = '#EBCB8B',       -- nord13 (yellow)
+  delete = '#BF616A',       -- nord11 (red)
 }
 
 -- Helper function to set highlights

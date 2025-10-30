@@ -23,35 +23,37 @@ blur = true
 x = 2
 y = 2
 
-# Darkearth color scheme to match nvim
+# Nord color scheme
+# Arctic, north-bluish color palette
+# See: https://www.nordtheme.com/
 [colors.primary]
-background = "#1A1A1A"
-foreground = "#D4C5A9"
+background = "#2E3440"
+foreground = "#D8DEE9"
 
 [colors.cursor]
-text = "#1A1A1A"
-cursor = "#D4C5A9"
+text = "#2E3440"
+cursor = "#D8DEE9"
 
 [colors.selection]
-text = "#D4C5A9"
-background = "#3A3A3A"
+text = "#D8DEE9"
+background = "#434C5E"
 
 [colors.normal]
-black = "#2A2A2A"
-red = "#D08770"
+black = "#3B4252"
+red = "#BF616A"
 green = "#A3BE8C"
-yellow = "#E6B450"
-blue = "#7FADD6"
-magenta = "#C59FC9"
-cyan = "#83B6AF"
-white = "#D4C5A9"
+yellow = "#EBCB8B"
+blue = "#81A1C1"
+magenta = "#B48EAD"
+cyan = "#88C0D0"
+white = "#E5E9F0"
 
 [colors.bright]
-black = "#4A4A4A"
-red = "#E89580"
-green = "#B3CE9C"
-yellow = "#F6C460"
-blue = "#8FBDE6"
-magenta = "#D5AFD9"
-cyan = "#93C6BF"
-white = "#E4D5B9"
+black = "#4C566A"
+red = "#BF616A"
+green = "#A3BE8C"
+yellow = "#EBCB8B"
+blue = "#81A1C1"
+magenta = "#B48EAD"
+cyan = "#8FBCBB"
+white = "#ECEFF4"

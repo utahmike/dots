@@ -1053,15 +1053,14 @@ require("lazy").setup({
 		},
 	},
 
-	{ -- Autumn Minimal - Custom colorscheme following Nikita Prokopov's syntax highlighting principles
-		-- Minimal, strategic colors inspired by autumn landscape
-		-- Only highlights: strings, comments, definitions, constants
-		-- See: https://tonsky.me/blog/syntax-highlighting/
+	{ -- Nord - Arctic, north-bluish color palette
+		-- Minimal, strategic colors inspired by nordic winter
+		-- See: https://www.nordtheme.com/
 		dir = vim.fn.stdpath("config") .. "/colors",
 		priority = 1000, -- Make sure to load this before all the other start plugins.
 		config = function()
 			-- Load the colorscheme here.
-			vim.cmd.colorscheme("autumn-minimal")
+			vim.cmd.colorscheme("nord")
 		end,
 	},
 
