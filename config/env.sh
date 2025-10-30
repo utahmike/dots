@@ -31,6 +31,9 @@ Linux)
 
     # Standard Linux paths
     export PATH=/usr/local/bin:$PATH
+
+    # npm global packages
+    export PATH=~/.npm-global/bin:$PATH
     ;;
 *)
     echo "Warning: Unknown OS ($(uname)) - some configurations may not work" >&2
