@@ -4,6 +4,7 @@ backups/
 # Local configuration
 config/env.local.sh
 .credentials.sh
+.zshrc.local
 
 # OS files
 .DS_Store

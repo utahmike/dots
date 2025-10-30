@@ -1,0 +1,37 @@
+# .zshrc.local
+# Machine-specific zsh configuration
+#
+# This file is sourced by .zshrc and should contain configurations
+# specific to this machine (not shared across systems).
+#
+# Usage:
+#   1. Copy this file to ~/.zshrc.local
+#   2. Uncomment and customize the settings below
+#   3. Add any machine-specific aliases, functions, or configurations
+
+# Example: Machine-specific PATH additions
+# export PATH="/opt/local/bin:$PATH"
+# export PATH="$HOME/custom-tools:$PATH"
+
+# Example: Work-specific environment variables
+# export WORK_PROJECT_DIR="$HOME/work/projects"
+# export COMPANY_VPN_CONFIG="/etc/vpn/company.conf"
+
+# Example: Machine-specific aliases
+# alias ssh-work="ssh user@work-server.company.com"
+# alias mount-nas="mount -t nfs nas.local:/share ~/mnt/nas"
+
+# Example: Override Oh My Zsh theme for this machine
+# ZSH_THEME="agnoster"
+
+# Example: Machine-specific plugins
+# plugins+=(docker aws)
+
+# Example: Custom functions for this machine
+# work_project() {
+#     cd "$WORK_PROJECT_DIR/$1"
+# }
+
+# Example: Local API keys or credentials (ensure this file is in .gitignore!)
+# Note: For sensitive credentials, prefer using ~/.credentials.sh instead
+# export LOCAL_API_KEY="your-local-dev-key"
