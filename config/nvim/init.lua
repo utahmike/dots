@@ -1078,14 +1078,17 @@ require("lazy").setup({
 		},
 	},
 
-	{ -- Nord - Arctic, north-bluish color palette
-		-- Minimal, strategic colors inspired by nordic winter
-		-- See: https://www.nordtheme.com/
-		dir = vim.fn.stdpath("config") .. "/colors",
+	{ -- Everforest - Comfortable & pleasant green forest theme
+		-- A green based color scheme designed to be warm and soft
+		-- See: https://github.com/sainnhe/everforest
+		"sainnhe/everforest",
 		priority = 1000, -- Make sure to load this before all the other start plugins.
 		config = function()
+			-- Configuration for everforest
+			vim.g.everforest_background = "medium" -- 'hard', 'medium' (default), 'soft'
+			vim.g.everforest_better_performance = 1
 			-- Load the colorscheme here.
-			vim.cmd.colorscheme("nord")
+			vim.cmd.colorscheme("everforest")
 		end,
 	},
 

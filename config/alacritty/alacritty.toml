@@ -23,37 +23,37 @@ blur = true
 x = 2
 y = 2
 
-# Nord color scheme
-# Arctic, north-bluish color palette
-# See: https://www.nordtheme.com/
+# Everforest color scheme
+# Comfortable & pleasant green forest theme
+# See: https://github.com/sainnhe/everforest
 [colors.primary]
-background = "#2E3440"
-foreground = "#D8DEE9"
+background = "#2D353B"
+foreground = "#D3C6AA"
 
 [colors.cursor]
-text = "#2E3440"
-cursor = "#D8DEE9"
+text = "#2D353B"
+cursor = "#D3C6AA"
 
 [colors.selection]
-text = "#D8DEE9"
-background = "#434C5E"
+text = "#D3C6AA"
+background = "#503946"
 
 [colors.normal]
-black = "#3B4252"
-red = "#BF616A"
-green = "#A3BE8C"
-yellow = "#EBCB8B"
-blue = "#81A1C1"
-magenta = "#B48EAD"
-cyan = "#88C0D0"
-white = "#E5E9F0"
+black = "#4B565C"
+red = "#E67E80"
+green = "#A7C080"
+yellow = "#DBBC7F"
+blue = "#7FBBB3"
+magenta = "#D699B6"
+cyan = "#83C092"
+white = "#D3C6AA"
 
 [colors.bright]
-black = "#4C566A"
-red = "#BF616A"
-green = "#A3BE8C"
-yellow = "#EBCB8B"
-blue = "#81A1C1"
-magenta = "#B48EAD"
-cyan = "#8FBCBB"
-white = "#ECEFF4"
+black = "#5C6A72"
+red = "#E67E80"
+green = "#A7C080"
+yellow = "#DBBC7F"
+blue = "#7FBBB3"
+magenta = "#D699B6"
+cyan = "#83C092"
+white = "#D3C6AA"

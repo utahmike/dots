@@ -6,62 +6,62 @@ local config = wezterm.config_builder()
 
 -- This is where you actually apply your config choices
 
--- Nord color scheme
--- Arctic, north-bluish color palette
--- See: https://www.nordtheme.com/
+-- Everforest color scheme
+-- Comfortable & pleasant green forest theme
+-- See: https://github.com/sainnhe/everforest
 config.colors = {
-	foreground = "#D8DEE9",  -- Snow Storm
-	background = "#2E3440",  -- Polar Night (darkest)
-	cursor_bg = "#D8DEE9",
-	cursor_fg = "#2E3440",
-	cursor_border = "#D8DEE9",
-	selection_bg = "#434C5E",
-	selection_fg = "#D8DEE9",
+	foreground = "#D3C6AA",  -- Everforest foreground
+	background = "#2D353B",  -- Everforest background (medium)
+	cursor_bg = "#D3C6AA",
+	cursor_fg = "#2D353B",
+	cursor_border = "#D3C6AA",
+	selection_bg = "#503946",
+	selection_fg = "#D3C6AA",
 
-	-- ANSI colors: Nord palette
+	-- ANSI colors: Everforest palette
 	ansi = {
-		"#3B4252", -- black (Polar Night - dark)
-		"#BF616A", -- red (Aurora - red)
-		"#A3BE8C", -- green (Aurora - green)
-		"#EBCB8B", -- yellow (Aurora - yellow)
-		"#81A1C1", -- blue (Frost - blue)
-		"#B48EAD", -- magenta (Aurora - purple)
-		"#88C0D0", -- cyan (Frost - bright cyan)
-		"#E5E9F0", -- white (Snow Storm - lighter)
+		"#4B565C", -- black
+		"#E67E80", -- red
+		"#A7C080", -- green
+		"#DBBC7F", -- yellow
+		"#7FBBB3", -- blue
+		"#D699B6", -- magenta
+		"#83C092", -- cyan
+		"#D3C6AA", -- white
 	},
 	brights = {
-		"#4C566A", -- bright black (Polar Night - light)
-		"#BF616A", -- bright red (Aurora - red)
-		"#A3BE8C", -- bright green (Aurora - green)
-		"#EBCB8B", -- bright yellow (Aurora - yellow)
-		"#81A1C1", -- bright blue (Frost - blue)
-		"#B48EAD", -- bright magenta (Aurora - purple)
-		"#8FBCBB", -- bright cyan (Frost - cyan)
-		"#ECEFF4", -- bright white (Snow Storm - lightest)
+		"#5C6A72", -- bright black
+		"#E67E80", -- bright red
+		"#A7C080", -- bright green
+		"#DBBC7F", -- bright yellow
+		"#7FBBB3", -- bright blue
+		"#D699B6", -- bright magenta
+		"#83C092", -- bright cyan
+		"#D3C6AA", -- bright white
 	},
 
 	-- Tab bar colors
 	tab_bar = {
-		background = "#2E3440",
+		background = "#2D353B",
 		active_tab = {
-			bg_color = "#434C5E",
-			fg_color = "#D8DEE9",
+			bg_color = "#475258",
+			fg_color = "#D3C6AA",
 		},
 		inactive_tab = {
-			bg_color = "#2E3440",
-			fg_color = "#4C566A",
+			bg_color = "#2D353B",
+			fg_color = "#859289",
 		},
 		inactive_tab_hover = {
-			bg_color = "#3B4252",
-			fg_color = "#88C0D0",
+			bg_color = "#3D484D",
+			fg_color = "#A7C080",
 		},
 		new_tab = {
-			bg_color = "#2E3440",
-			fg_color = "#4C566A",
+			bg_color = "#2D353B",
+			fg_color = "#859289",
 		},
 		new_tab_hover = {
-			bg_color = "#3B4252",
-			fg_color = "#88C0D0",
+			bg_color = "#3D484D",
+			fg_color = "#A7C080",
 		},
 	},
 }
