@@ -246,6 +246,23 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+-- OpenSCAD filetype detection
+vim.filetype.add({
+	extension = {
+		scad = "openscad",
+	},
+})
+
+-- OpenSCAD commentstring configuration
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "openscad",
+	desc = "Set commentstring for OpenSCAD files",
+	group = vim.api.nvim_create_augroup("openscad-config", { clear = true }),
+	callback = function()
+		vim.opt_local.commentstring = "// %s"
+	end,
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -875,6 +892,12 @@ require("lazy").setup({
 						},
 					},
 				},
+
+				openscad_lsp = {
+					-- OpenSCAD Language Server
+					-- Provides completion, hover, formatting, and more
+					-- Install: cargo install openscad-lsp
+				},
 			}
 
 			-- Ensure the servers and tools above are installed
@@ -945,6 +968,8 @@ require("lazy").setup({
 			end,
 			formatters_by_ft = {
 				lua = { "stylua" },
+				-- OpenSCAD formatting via LSP (openscad-lsp includes topiary formatter)
+				openscad = {},
 				-- Conform can also run multiple formatters sequentially
 				-- python = { "isort", "black" },
 				--
@@ -1134,34 +1159,46 @@ require("lazy").setup({
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		main = "nvim-treesitter.configs", -- Sets main module to use for opts
-		-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-		opts = {
-			ensure_installed = {
-				"bash",
-				"c",
-				"diff",
-				"html",
-				"lua",
-				"luadoc",
-				"markdown",
-				"markdown_inline",
-				"rust",
-				"query",
-				"vim",
-				"vimdoc",
-			},
-			-- Autoinstall languages that are not installed
-			auto_install = true,
-			highlight = {
-				enable = true,
-				-- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-				--  If you are experiencing weird indenting issues, add the language to
-				--  the list of additional_vim_regex_highlighting and disabled languages for indent.
-				additional_vim_regex_highlighting = { "ruby" },
-			},
-			indent = { enable = true, disable = { "ruby" } },
-		},
+		config = function()
+			-- Register custom OpenSCAD parser
+			local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+			parser_config.openscad = {
+				install_info = {
+					url = "https://github.com/bollian/tree-sitter-openscad",
+					files = { "src/parser.c" },
+					branch = "master",
+				},
+				filetype = "openscad",
+			}
+
+			-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
+			require("nvim-treesitter.configs").setup({
+				ensure_installed = {
+					"bash",
+					"c",
+					"diff",
+					"html",
+					"lua",
+					"luadoc",
+					"markdown",
+					"markdown_inline",
+					"rust",
+					"query",
+					"vim",
+					"vimdoc",
+				},
+				-- Autoinstall languages that are not installed
+				auto_install = true,
+				highlight = {
+					enable = true,
+					-- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
+					--  If you are experiencing weird indenting issues, add the language to
+					--  the list of additional_vim_regex_highlighting and disabled languages for indent.
+					additional_vim_regex_highlighting = { "ruby" },
+				},
+				indent = { enable = true, disable = { "ruby" } },
+			})
+		end,
 		-- There are additional nvim-treesitter modules that you can use to interact
 		-- with nvim-treesitter. You should go explore a few and see what interests you:
 		--
