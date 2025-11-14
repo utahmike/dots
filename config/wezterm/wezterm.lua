@@ -6,62 +6,62 @@ local config = wezterm.config_builder()
 
 -- This is where you actually apply your config choices
 
--- Everforest color scheme
--- Comfortable & pleasant green forest theme
--- See: https://github.com/sainnhe/everforest
+-- Melange color scheme
+-- Warm, dark colorscheme with vintage feel
+-- See: https://github.com/savq/melange-nvim
 config.colors = {
-	foreground = "#D3C6AA",  -- Everforest foreground
-	background = "#2D353B",  -- Everforest background (medium)
-	cursor_bg = "#D3C6AA",
-	cursor_fg = "#2D353B",
-	cursor_border = "#D3C6AA",
-	selection_bg = "#503946",
-	selection_fg = "#D3C6AA",
+	foreground = "#ECE1D7",  -- Melange foreground (warm off-white)
+	background = "#2A2520",  -- Melange background (dark warm brown)
+	cursor_bg = "#ECE1D7",
+	cursor_fg = "#2A2520",
+	cursor_border = "#ECE1D7",
+	selection_bg = "#574D48",
+	selection_fg = "#ECE1D7",
 
-	-- ANSI colors: Everforest palette
+	-- ANSI colors: Melange palette
 	ansi = {
-		"#4B565C", -- black
-		"#E67E80", -- red
-		"#A7C080", -- green
-		"#DBBC7F", -- yellow
-		"#7FBBB3", -- blue
-		"#D699B6", -- magenta
-		"#83C092", -- cyan
-		"#D3C6AA", -- white
+		"#352F2A", -- black
+		"#D47766", -- red
+		"#85B695", -- green
+		"#EBC06D", -- yellow
+		"#A3A9CE", -- blue
+		"#CF9BC2", -- magenta
+		"#89B3B6", -- cyan
+		"#C1A78E", -- white
 	},
 	brights = {
-		"#5C6A72", -- bright black
-		"#E67E80", -- bright red
-		"#A7C080", -- bright green
-		"#DBBC7F", -- bright yellow
-		"#7FBBB3", -- bright blue
-		"#D699B6", -- bright magenta
-		"#83C092", -- bright cyan
-		"#D3C6AA", -- bright white
+		"#4D453E", -- bright black
+		"#D47766", -- bright red
+		"#85B695", -- bright green
+		"#EBC06D", -- bright yellow
+		"#A3A9CE", -- bright blue
+		"#CF9BC2", -- bright magenta
+		"#89B3B6", -- bright cyan
+		"#ECE1D7", -- bright white
 	},
 
 	-- Tab bar colors
 	tab_bar = {
-		background = "#2D353B",
+		background = "#2A2520",
 		active_tab = {
-			bg_color = "#475258",
-			fg_color = "#D3C6AA",
+			bg_color = "#403A36",
+			fg_color = "#ECE1D7",
 		},
 		inactive_tab = {
-			bg_color = "#2D353B",
-			fg_color = "#859289",
+			bg_color = "#2A2520",
+			fg_color = "#867462",
 		},
 		inactive_tab_hover = {
-			bg_color = "#3D484D",
-			fg_color = "#A7C080",
+			bg_color = "#352F2A",
+			fg_color = "#C1A78E",
 		},
 		new_tab = {
-			bg_color = "#2D353B",
-			fg_color = "#859289",
+			bg_color = "#2A2520",
+			fg_color = "#867462",
 		},
 		new_tab_hover = {
-			bg_color = "#3D484D",
-			fg_color = "#A7C080",
+			bg_color = "#352F2A",
+			fg_color = "#C1A78E",
 		},
 	},
 }

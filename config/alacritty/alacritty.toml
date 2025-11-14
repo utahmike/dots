@@ -23,37 +23,37 @@ blur = true
 x = 2
 y = 2
 
-# Everforest color scheme
-# Comfortable & pleasant green forest theme
-# See: https://github.com/sainnhe/everforest
+# Melange color scheme
+# Warm, dark colorscheme with vintage feel
+# See: https://github.com/savq/melange-nvim
 [colors.primary]
-background = "#2D353B"
-foreground = "#D3C6AA"
+background = "#2A2520"
+foreground = "#ECE1D7"
 
 [colors.cursor]
-text = "#2D353B"
-cursor = "#D3C6AA"
+text = "#2A2520"
+cursor = "#ECE1D7"
 
 [colors.selection]
-text = "#D3C6AA"
-background = "#503946"
+text = "#ECE1D7"
+background = "#574D48"
 
 [colors.normal]
-black = "#4B565C"
-red = "#E67E80"
-green = "#A7C080"
-yellow = "#DBBC7F"
-blue = "#7FBBB3"
-magenta = "#D699B6"
-cyan = "#83C092"
-white = "#D3C6AA"
+black = "#352F2A"
+red = "#D47766"
+green = "#85B695"
+yellow = "#EBC06D"
+blue = "#A3A9CE"
+magenta = "#CF9BC2"
+cyan = "#89B3B6"
+white = "#C1A78E"
 
 [colors.bright]
-black = "#5C6A72"
-red = "#E67E80"
-green = "#A7C080"
-yellow = "#DBBC7F"
-blue = "#7FBBB3"
-magenta = "#D699B6"
-cyan = "#83C092"
-white = "#D3C6AA"
+black = "#4D453E"
+red = "#D47766"
+green = "#85B695"
+yellow = "#EBC06D"
+blue = "#A3A9CE"
+magenta = "#CF9BC2"
+cyan = "#89B3B6"
+white = "#ECE1D7"

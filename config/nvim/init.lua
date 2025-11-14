@@ -1078,17 +1078,14 @@ require("lazy").setup({
 		},
 	},
 
-	{ -- Everforest - Comfortable & pleasant green forest theme
-		-- A green based color scheme designed to be warm and soft
-		-- See: https://github.com/sainnhe/everforest
-		"sainnhe/everforest",
+	{ -- Melange - Warm, dark colorscheme
+		-- A warm, dark color scheme inspired by various retro and vintage themes
+		-- See: https://github.com/savq/melange-nvim
+		"savq/melange-nvim",
 		priority = 1000, -- Make sure to load this before all the other start plugins.
 		config = function()
-			-- Configuration for everforest
-			vim.g.everforest_background = "medium" -- 'hard', 'medium' (default), 'soft'
-			vim.g.everforest_better_performance = 1
 			-- Load the colorscheme here.
-			vim.cmd.colorscheme("everforest")
+			vim.cmd.colorscheme("melange")
 		end,
 	},
 
