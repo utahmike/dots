@@ -246,22 +246,6 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
--- OpenSCAD filetype detection
-vim.filetype.add({
-	extension = {
-		scad = "openscad",
-	},
-})
-
--- OpenSCAD commentstring configuration
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "openscad",
-	desc = "Set commentstring for OpenSCAD files",
-	group = vim.api.nvim_create_augroup("openscad-config", { clear = true }),
-	callback = function()
-		vim.opt_local.commentstring = "// %s"
-	end,
-})
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
@@ -892,12 +876,6 @@ require("lazy").setup({
 						},
 					},
 				},
-
-				openscad_lsp = {
-					-- OpenSCAD Language Server
-					-- Provides completion, hover, formatting, and more
-					-- Install: cargo install openscad-lsp
-				},
 			}
 
 			-- Ensure the servers and tools above are installed
@@ -968,8 +946,6 @@ require("lazy").setup({
 			end,
 			formatters_by_ft = {
 				lua = { "stylua" },
-				-- OpenSCAD formatting via LSP (openscad-lsp includes topiary formatter)
-				openscad = {},
 				-- Conform can also run multiple formatters sequentially
 				-- python = { "isort", "black" },
 				--
@@ -1160,17 +1136,6 @@ require("lazy").setup({
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		config = function()
-			-- Register custom OpenSCAD parser
-			local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-			parser_config.openscad = {
-				install_info = {
-					url = "https://github.com/bollian/tree-sitter-openscad",
-					files = { "src/parser.c" },
-					branch = "master",
-				},
-				filetype = "openscad",
-			}
-
 			-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 			require("nvim-treesitter.configs").setup({
 				ensure_installed = {
