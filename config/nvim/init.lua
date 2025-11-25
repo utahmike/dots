@@ -1113,6 +1113,13 @@ require("lazy").setup({
 			-- - sr)'  - [S]urround [R]eplace [)] [']
 			require("mini.surround").setup()
 
+			-- Simple comment toggling
+			--
+			-- - gcc - [G]o [C]omment [C]urrent line
+			-- - gc{motion} - [G]o [C]omment {motion} (e.g., gcap to comment a paragraph)
+			-- - gc (visual mode) - [G]o [C]omment selection
+			require("mini.comment").setup()
+
 			-- Simple and easy statusline.
 			--  You could remove this setup call if you don't like it,
 			--  and try some other statusline plugin
