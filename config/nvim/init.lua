@@ -1113,13 +1113,6 @@ require("lazy").setup({
 			-- - sr)'  - [S]urround [R]eplace [)] [']
 			require("mini.surround").setup()
 
-			-- Simple comment toggling
-			--
-			-- - gcc - [G]o [C]omment [C]urrent line
-			-- - gc{motion} - [G]o [C]omment {motion} (e.g., gcap to comment a paragraph)
-			-- - gc (visual mode) - [G]o [C]omment selection
-			require("mini.comment").setup()
-
 			-- Simple and easy statusline.
 			--  You could remove this setup call if you don't like it,
 			--  and try some other statusline plugin
@@ -1139,6 +1132,27 @@ require("lazy").setup({
 			--  Check out: https://github.com/echasnovski/mini.nvim
 		end,
 	},
+
+	{ -- Smart and powerful comment plugin
+		"numToStr/Comment.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = {
+			"JoosepAlviste/nvim-ts-context-commentstring",
+		},
+		config = function()
+			-- import comment plugin safely
+			local comment = require("Comment")
+
+			local ts_context_commentstring = require("ts_context_commentstring.integrations.comment_nvim")
+
+			-- enable comment
+			comment.setup({
+				-- for commenting tsx, jsx, svelte, html files
+				pre_hook = ts_context_commentstring.create_pre_hook(),
+			})
+		end,
+	},
+
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
