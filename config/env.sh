@@ -61,7 +61,7 @@ mkdir -p "$TMUX_TMPDIR"
 #     tmux attach -t default || tmux new -s default
 # fi
 
-export PATH=$PATH:$HOME/bin:$CARGO_HOME/bin:/usr/local/go/bin
+export PATH=$PATH:$HOME/bin:$CARGO_HOME/bin:/usr/local/go/bin:$HOME/dev/aspengrove/scripts
 
 alias ls='lsd'
 alias ll="ls -lh"
