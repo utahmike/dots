@@ -589,6 +589,30 @@ require("lazy").setup({
 
 	"tpope/vim-fugitive",
 
+	-- Vim Wiki - Personal wiki for notes and documentation
+	{
+		"vimwiki/vimwiki",
+		init = function()
+			-- Configure vimwiki before the plugin loads
+			vim.g.vimwiki_list = {
+				{
+					path = "~/Documents/aspengrove",
+					syntax = "markdown",
+					ext = ".md",
+				},
+			}
+			-- Ensure vimwiki doesn't hijack all markdown files
+			vim.g.vimwiki_global_ext = 0
+		end,
+		keys = {
+			{ "<leader>ww", "<cmd>VimwikiIndex<cr>", desc = "[W]iki Index" },
+			{ "<leader>wt", "<cmd>VimwikiTabIndex<cr>", desc = "[W]iki Index in new [T]ab" },
+			{ "<leader>ws", "<cmd>VimwikiUISelect<cr>", desc = "[W]iki [S]elect" },
+			{ "<leader>wi", "<cmd>VimwikiDiaryIndex<cr>", desc = "[W]iki Diary [I]ndex" },
+			{ "<leader>w<leader>w", "<cmd>VimwikiMakeDiaryNote<cr>", desc = "[W]iki Make Diary Note" },
+		},
+	},
+
 	-- Seamless navigation between tmux panes and nvim splits
 	{
 		"christoomey/vim-tmux-navigator",
