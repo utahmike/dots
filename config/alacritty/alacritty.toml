@@ -23,33 +23,35 @@ blur = true
 x = 2
 y = 2
 
-# Melange color scheme
+# Melange color scheme (official colors from melange-nvim)
 # Warm, dark colorscheme with vintage feel
 # See: https://github.com/savq/melange-nvim
 [colors.primary]
-background = "#2A2520"
+background = "#292522"
 foreground = "#ECE1D7"
 
 [colors.cursor]
-text = "#2A2520"
+text = "#292522"
 cursor = "#ECE1D7"
 
 [colors.selection]
 text = "#ECE1D7"
-background = "#574D48"
+background = "#403A36"
 
+# ANSI colors (0-7): Melange official palette
 [colors.normal]
-black = "#352F2A"
-red = "#D47766"
-green = "#85B695"
-yellow = "#EBC06D"
-blue = "#A3A9CE"
-magenta = "#CF9BC2"
-cyan = "#89B3B6"
+black = "#34302C"
+red = "#BD8183"
+green = "#78997A"
+yellow = "#E49B5D"
+blue = "#7F91B2"
+magenta = "#B380B0"
+cyan = "#7B9695"
 white = "#C1A78E"
 
+# Bright colors (8-15): Melange official palette
 [colors.bright]
-black = "#4D453E"
+black = "#867462"
 red = "#D47766"
 green = "#85B695"
 yellow = "#EBC06D"
