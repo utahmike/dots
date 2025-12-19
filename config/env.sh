@@ -5,6 +5,8 @@ if [ ! -S ~/.ssh/ssh_auth_sock ]; then
 fi
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 
+export OBSIDIAN_VAULT=~/Documents/aspengrove
+
 case $(uname) in
 Darwin)
     # macOS specific configuration
