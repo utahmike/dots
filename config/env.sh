@@ -6,6 +6,7 @@ fi
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 
 export OBSIDIAN_VAULT=~/Documents/aspengrove
+export BIROOT=$HOME/dev/go/src/gitlab.com/zeropw/zero
 
 case $(uname) in
 Darwin)
@@ -81,3 +82,4 @@ export GIT_EDITOR="$VISUAL"
 
 # Set up CDPATH for easier navigation (zsh/bash)
 cdpath=($HOME/dev)
+cdpath+=("${BIROOT:h}")
