@@ -29,6 +29,7 @@ backup:
 	if [ -d ~/.config/alacritty ]; then cp -r ~/.config/alacritty "$$BACKUP_DIR/alacritty" 2>/dev/null || true; fi; \
 	if [ -d ~/.config/wezterm ]; then cp -r ~/.config/wezterm "$$BACKUP_DIR/wezterm" 2>/dev/null || true; fi; \
 	if [ -d ~/.config/tmux ]; then cp -r ~/.config/tmux "$$BACKUP_DIR/tmux" 2>/dev/null || true; fi; \
+	if [ -d ~/.config/zellij ]; then cp -r ~/.config/zellij "$$BACKUP_DIR/zellij" 2>/dev/null || true; fi; \
 	if [ -f ~/.gitconfig ]; then cp ~/.gitconfig "$$BACKUP_DIR/gitconfig" 2>/dev/null || true; fi; \
 	if [ -f ~/.zshrc ]; then cp ~/.zshrc "$$BACKUP_DIR/zshrc" 2>/dev/null || true; fi; \
 	if [ -d ~/.claude ]; then cp -r ~/.claude "$$BACKUP_DIR/claude" 2>/dev/null || true; fi; \
@@ -78,6 +79,9 @@ restore:
 	fi; \
 	if [ -d "backups/$$LATEST/tmux" ]; then \
 		mkdir -p ~/.config && cp -r "backups/$$LATEST/tmux" ~/.config/; \
+	fi; \
+	if [ -d "backups/$$LATEST/zellij" ]; then \
+		mkdir -p ~/.config && cp -r "backups/$$LATEST/zellij" ~/.config/; \
 	fi; \
 	if [ -f "backups/$$LATEST/gitconfig" ]; then \
 		cp "backups/$$LATEST/gitconfig" ~/.gitconfig; \
