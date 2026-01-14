@@ -295,8 +295,8 @@ web_client {
  
 // Choose the theme that is specified in the themes section.
 // Default: default
-// 
-// theme "dracula"
+//
+theme "melange"
  
 // Choose the base input mode of zellij.
 // Default: normal
@@ -538,9 +538,133 @@ web_client {
 // (Requires restart)
 // web_server_port 8082
  
-// A command to run (will be wrapped with sh -c and provided the RESURRECT_COMMAND env variable) 
+// A command to run (will be wrapped with sh -c and provided the RESURRECT_COMMAND env variable)
 // after Zellij attempts to discover a command inside a pane when resurrecting sessions, the STDOUT
 // of this command will be used instead of the discovered RESURRECT_COMMAND
 // can be useful for removing wrappers around commands
 // Note: be sure to escape backslashes and similar characters properly
 // post_command_discovery_hook "echo $RESURRECT_COMMAND | sed <your_regex_here>"
+
+// Melange color scheme - matching Alacritty terminal colors
+// Warm, dark colorscheme with vintage feel
+// See: https://github.com/savq/melange-nvim
+themes {
+    melange {
+        text_unselected {
+            base 236 225 215      // foreground
+            background 41 37 34   // background
+            emphasis_0 228 155 93 // yellow
+            emphasis_1 123 150 149 // cyan
+            emphasis_2 127 145 178 // blue
+            emphasis_3 179 128 176 // magenta
+        }
+        text_selected {
+            base 236 225 215      // foreground
+            background 64 58 54   // selection bg
+            emphasis_0 235 192 109 // bright yellow
+            emphasis_1 133 182 149 // bright green
+            emphasis_2 163 169 206 // bright blue
+            emphasis_3 207 155 194 // bright magenta
+        }
+        ribbon_selected {
+            base 236 225 215      // fg
+            background 134 116 98 // muted brown
+            emphasis_0 228 155 93 // yellow
+            emphasis_1 193 167 142 // white
+            emphasis_2 127 145 178 // blue
+            emphasis_3 179 128 176 // magenta
+        }
+        ribbon_unselected {
+            base 193 167 142      // white
+            background 52 48 44   // black
+            emphasis_0 189 129 131 // red
+            emphasis_1 236 225 215 // fg
+            emphasis_2 127 145 178 // blue
+            emphasis_3 179 128 176 // magenta
+        }
+        table_title {
+            base 193 167 142      // muted white
+            background 0 0 0      // transparent
+            emphasis_0 228 155 93 // yellow
+            emphasis_1 123 150 149 // cyan
+            emphasis_2 127 145 178 // blue
+            emphasis_3 179 128 176 // magenta
+        }
+        table_cell_selected {
+            base 236 225 215      // foreground
+            background 64 58 54   // selection bg
+            emphasis_0 228 155 93 // yellow
+            emphasis_1 123 150 149 // cyan
+            emphasis_2 127 145 178 // blue
+            emphasis_3 179 128 176 // magenta
+        }
+        table_cell_unselected {
+            base 236 225 215      // foreground
+            background 41 37 34   // background
+            emphasis_0 228 155 93 // yellow
+            emphasis_1 123 150 149 // cyan
+            emphasis_2 127 145 178 // blue
+            emphasis_3 179 128 176 // magenta
+        }
+        list_selected {
+            base 236 225 215      // foreground
+            background 64 58 54   // selection bg
+            emphasis_0 228 155 93 // yellow
+            emphasis_1 123 150 149 // cyan
+            emphasis_2 127 145 178 // blue
+            emphasis_3 179 128 176 // magenta
+        }
+        list_unselected {
+            base 236 225 215      // foreground
+            background 41 37 34   // background
+            emphasis_0 228 155 93 // yellow
+            emphasis_1 123 150 149 // cyan
+            emphasis_2 127 145 178 // blue
+            emphasis_3 179 128 176 // magenta
+        }
+        frame_selected {
+            base 193 167 142      // muted white
+            background 0 0 0      // transparent
+            emphasis_0 228 155 93 // yellow
+            emphasis_1 123 150 149 // cyan
+            emphasis_2 179 128 176 // magenta
+            emphasis_3 0 0 0      // transparent
+        }
+        frame_highlight {
+            base 228 155 93       // yellow (prominent)
+            background 0 0 0      // transparent
+            emphasis_0 235 192 109 // bright yellow
+            emphasis_1 228 155 93 // yellow
+            emphasis_2 228 155 93 // yellow
+            emphasis_3 228 155 93 // yellow
+        }
+        exit_code_success {
+            base 123 150 149      // muted cyan
+            background 0 0 0      // transparent
+            emphasis_0 193 167 142 // white
+            emphasis_1 41 37 34   // bg
+            emphasis_2 179 128 176 // magenta
+            emphasis_3 127 145 178 // blue
+        }
+        exit_code_error {
+            base 189 129 131      // red
+            background 0 0 0      // transparent
+            emphasis_0 212 119 102 // bright red
+            emphasis_1 0 0 0      // transparent
+            emphasis_2 0 0 0      // transparent
+            emphasis_3 0 0 0      // transparent
+        }
+        multiplayer_user_colors {
+            player_1 189 129 131  // red
+            player_2 127 145 178  // blue
+            player_3 120 153 122  // green
+            player_4 228 155 93   // yellow
+            player_5 123 150 149  // cyan
+            player_6 179 128 176  // magenta
+            player_7 212 119 102  // bright red
+            player_8 163 169 206  // bright blue
+            player_9 133 182 149  // bright green
+            player_10 235 192 109 // bright yellow
+        }
+    }
+}
