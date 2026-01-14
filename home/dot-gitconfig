@@ -10,7 +10,7 @@
     hist = "log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
 
 [credential]
-	helper = osxkeychain
+	helper = store
 
 [filter "lfs"]
 	required = true
