@@ -83,3 +83,6 @@ export GIT_EDITOR="$VISUAL"
 # Set up CDPATH for easier navigation (zsh/bash)
 cdpath=($HOME/dev)
 cdpath+=("${BIROOT:h}")
+
+# Display system info on shell startup
+command -v fastfetch >/dev/null 2>&1 && fastfetch
