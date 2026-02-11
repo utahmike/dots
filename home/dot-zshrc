@@ -110,3 +110,4 @@ source $HOME/.config/env.sh
 if [ -f "$HOME/.zshrc.local" ]; then
     source "$HOME/.zshrc.local"
 fi
+export PATH="$HOME/.local/bin:$PATH"
