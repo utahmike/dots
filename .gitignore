@@ -17,3 +17,6 @@ config/env.local.sh
 # Neovim
 lazy-lock.json
 config/nvim/lazy-lock.json
+
+# btop
+config/btop/btop.log
