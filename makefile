@@ -43,7 +43,20 @@ install: check-dependencies backup
 	@stow -v --adopt -t ~/.config config
 	@stow -v --adopt -t ~/.claude claude 2>/dev/null || echo "Note: .claude directory not found, skipping"
 	@stow -v --adopt -t ~ --dotfiles home
+	@if [ "$$(uname)" = "Darwin" ]; then \
+		mkdir -p ~/Library/LaunchAgents; \
+		stow -v --adopt -t ~/Library/LaunchAgents launchagents; \
+	fi
 	@git -C $(dir $(abspath $(lastword $(MAKEFILE_LIST)))) checkout -- .
+	@if [ "$$(uname)" = "Darwin" ]; then \
+		echo "Loading launch agents..."; \
+		for plist in launchagents/*.plist; do \
+			label=$$(defaults read "$$(pwd)/$$plist" Label 2>/dev/null); \
+			launchctl bootout gui/$$(id -u)/$$label 2>/dev/null || true; \
+			launchctl bootstrap gui/$$(id -u) ~/Library/LaunchAgents/$$(basename "$$plist"); \
+			launchctl kickstart gui/$$(id -u)/$$label; \
+		done; \
+	fi
 	@echo ""
 	@echo "✓ Installation complete!"
 	@echo ""
@@ -60,6 +73,13 @@ uninstall:
 	@stow -v -t ~/.config --delete config 2>/dev/null || true
 	@stow -v -t ~/.claude --delete claude 2>/dev/null || true
 	@stow -v -t ~ --delete --dotfiles home 2>/dev/null || true
+	@if [ "$$(uname)" = "Darwin" ]; then \
+		for plist in launchagents/*.plist; do \
+			label=$$(defaults read "$$(pwd)/$$plist" Label 2>/dev/null); \
+			launchctl bootout gui/$$(id -u)/$$label 2>/dev/null || true; \
+		done; \
+		stow -v -t ~/Library/LaunchAgents --delete launchagents 2>/dev/null || true; \
+	fi
 	@echo "✓ Uninstall complete"
 
 # Restore from most recent backup
