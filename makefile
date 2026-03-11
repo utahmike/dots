@@ -47,7 +47,8 @@ install: check-dependencies backup
 		mkdir -p ~/Library/LaunchAgents; \
 		stow -v --adopt -t ~/Library/LaunchAgents launchagents; \
 	fi
-	@git -C $(dir $(abspath $(lastword $(MAKEFILE_LIST)))) checkout -- .
+	@git -C $(dir $(abspath $(lastword $(MAKEFILE_LIST)))) checkout -- config home launchagents
+	@git -C $(dir $(abspath $(lastword $(MAKEFILE_LIST)))) checkout -- claude 2>/dev/null || true
 	@if [ "$$(uname)" = "Darwin" ]; then \
 		echo "Loading launch agents..."; \
 		for plist in launchagents/*.plist; do \
