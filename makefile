@@ -40,11 +40,9 @@ backup:
 # Install with automatic backup
 install: check-dependencies backup
 	@echo "Installing dotfiles..."
-	@stow -v --adopt -t ~/.config config
-	@stow -v --adopt -t ~/.claude claude 2>/dev/null || echo "Note: .claude directory not found, skipping"
-	@stow -v --adopt -t ~ --dotfiles home
-	@git -C $(dir $(abspath $(lastword $(MAKEFILE_LIST)))) checkout -- config home
-	@git -C $(dir $(abspath $(lastword $(MAKEFILE_LIST)))) checkout -- claude 2>/dev/null || true
+	@stow -v -t ~/.config config
+	@stow -v -t ~/.claude claude 2>/dev/null || echo "Note: .claude directory not found, skipping"
+	@stow -v -t ~ --dotfiles home
 	@echo ""
 	@echo "✓ Installation complete!"
 	@echo ""
