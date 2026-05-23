@@ -110,7 +110,8 @@ sudo apt install stow git tmux
 │   └── env.sh       # Shell environment
 ├── home/            # ~/* files (use dot- prefix for dotfiles)
 │   └── dot-gitconfig
-├── .claude/         # Claude Code settings
+├── claude/          # ~/.claude/* (Claude Code user config; see below)
+├── .claude/         # Project-local Claude Code settings for this repo
 ├── plan/            # Design documents
 ├── scripts/         # Helper scripts (backup, test)
 ├── templates/       # Configuration templates
@@ -218,6 +219,37 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # Uncomment the TPM section in config/tmux/tmux.conf
 # Press C-a I (capital I) to install plugins
 ```
+
+## Claude Code (`claude/` package)
+
+The `claude/` directory is a stow package that symlinks editable Claude Code config
+into `~/.claude/`. This keeps `git status` quiet — only real changes show up, never
+the constant churn from `projects/`, `todos/`, `shell-snapshots/`, `history.jsonl`,
+etc., which all live alongside as real (non-symlinked) paths.
+
+Tracked:
+- `claude/settings.json` — user-level settings
+- `claude/keybindings.json` — keyboard shortcut overrides (starts as `{}`)
+- `claude/CLAUDE.md` — user-level instructions applied to every session
+- `claude/commands/` — custom slash commands (one `.md` per command)
+- `claude/skills/<name>/SKILL.md` — custom skills
+- `claude/agents/` — custom subagents (scaffolded empty)
+- `claude/output-styles/` — custom output style presets (scaffolded empty)
+
+The two empty scaffold dirs use `.gitkeep` to satisfy git; `claude/.stow-local-ignore`
+keeps stow from symlinking those `.gitkeep` files into `~/.claude/`.
+
+Not tracked (runtime/state — left as real paths under `~/.claude/`):
+- `history.jsonl`, `*-cache.json`, `.last-cleanup`, `.update.lock`
+- `backups/`, `cache/`, `debug/`, `file-history/`, `paste-cache/`, `plans/`,
+  `plugins/`, `projects/`, `session-env/`, `sessions/`, `shell-snapshots/`,
+  `statsig/`, `tasks/`, `telemetry/`, `todos/`
+
+To add a new tracked file, drop it into the matching path under `claude/` and
+re-run `make install` (or `stow -v -t ~/.claude claude` directly). Existing
+real directories at the destination are descended into, so adding a file inside
+`claude/commands/` symlinks just that file — it won't displace anything else
+already living in `~/.claude/commands/`.
 
 ## Troubleshooting
 

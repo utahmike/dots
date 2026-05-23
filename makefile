@@ -41,7 +41,7 @@ backup:
 install: check-dependencies backup
 	@echo "Installing dotfiles..."
 	@stow -v -t ~/.config config
-	@stow -v -t ~/.claude claude 2>/dev/null || echo "Note: .claude directory not found, skipping"
+	@stow -v -t ~/.claude claude
 	@stow -v -t ~ --dotfiles home
 	@echo ""
 	@echo "✓ Installation complete!"
