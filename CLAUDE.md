@@ -3,6 +3,11 @@ system. The design artificts for this project will live in the `plan`
 subdirectory. This is where you will write any artifact files not specifically
 tied to code generation.
 
+## Stack
+
+- shell
+- make
+
 Prompt Editor Role
 Task: Improve the prompt document so a separate coding pass will succeed on first try.
 Constraints: Don’t write code. Propose changes only to the prompt doc. Update
