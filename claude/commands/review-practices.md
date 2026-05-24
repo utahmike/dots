@@ -1,6 +1,6 @@
 ---
-description: Strict review of the current diff or the project as-is, bucketed by language and dispatched to language subagents for context-isolated review. Aggregates findings with severity labels. Modes — default (diff), --all (whole project), bare path (subtree), --scope <name> (named scope from project CLAUDE.md).
-allowed-tools: Read, Glob, Grep, Bash
+description: Strict review of the current diff or the project as-is, bucketed by language and dispatched to language subagents for context-isolated review. Aggregates findings with severity labels and files BLOCKING/IMPORTANT findings into the project's configured issue system. Modes — default (diff), --all (whole project), bare path (subtree), --scope <name> (named scope), --last N (last N commits), --no-file (skip issue filing).
+allowed-tools: Read, Glob, Grep, Bash, Skill
 ---
 
 # Review against project practices
@@ -39,6 +39,8 @@ maintainable changes over clever or broad rewrites.
 - `--last <N>` — diff mode covering the last N commits on HEAD,
   equivalent to `HEAD~<N>..HEAD`. Convenient shorthand when reviewing
   a stack of recent commits without naming a base ref.
+- `--no-file` — produce the report only; do not file any findings as
+  issues, even if the project has an `## Issue System` configured.
 
 Examples:
 
@@ -55,6 +57,7 @@ Examples:
 /review-practices main --scope frontend    # branch diff, frontend scope only
 /review-practices web/components/          # diff, scoped to web/components/
 /review-practices --all web/components/    # whole project under web/components/
+/review-practices --no-file                # report only; don't file issues
 ```
 
 Rules:
@@ -238,6 +241,88 @@ Severity labels:
 - **IMPORTANT** — should be fixed soon but may not block if risk is
   low.
 - **NIT** — minor readability or style.
+
+## Filing findings as issues
+
+After the aggregated report is produced, file BLOCKING and IMPORTANT
+findings into the project's configured issue system. NIT findings
+stay in the report only — they're not worth a ticket.
+
+### When to file
+
+- Project `CLAUDE.md` has an `## Issue System` section → filing is
+  enabled.
+- `--no-file` was passed → skip filing entirely; note in Summary.
+- No `## Issue System` section → skip filing silently; note in
+  Summary so the user knows nothing was filed.
+- All findings are NIT → nothing to file; note in Summary.
+
+### Confirmation
+
+Filing creates externally visible tickets. Before filing:
+
+1. Print a "Proposed issues" preview block listing each issue's
+   title, severity, file:line, and target tracker (e.g. "Linear —
+   team ENG").
+2. Ask the user to confirm: "File these <N> issues? (yes / no / pick
+   a subset)".
+3. Only after confirmation, dispatch each issue to the `issue-system`
+   skill.
+
+If the user says no, end with the report intact. If they pick a
+subset, file only those.
+
+### Dispatching to the issue system
+
+Use the `Skill` tool to invoke the `issue-system` skill once per
+issue to be filed. The skill reads the project CLAUDE.md to determine
+the tracker type and follows its adapter recipe.
+
+Each issue payload should contain:
+
+- **Title**: short, action-oriented, includes file basename when
+  scoped to one file. Example: `[react] UserList.tsx: missing
+  isOptionEqualToValue on Autocomplete<User>`.
+- **Body**: finding details — file:line, the violated practice rule
+  (with file name, e.g. "Violates `react-mui.md`: Autocomplete with
+  object options must define isOptionEqualToValue"), a one-paragraph
+  why, and the suggested fix snippet if available.
+- **Severity / labels**: map BLOCKING → whatever the tracker uses for
+  blocker/high priority; IMPORTANT → medium/normal. Pass these as
+  the `issue-system` skill's adapter expects (it knows the tracker's
+  schema).
+- **Source attribution**: include "Found by `/review-practices`
+  (`<subagent>` subagent)" in the body footer.
+
+If the issue-system skill returns an issue URL or ID, capture it.
+
+### Reporting back
+
+After filing (or skipping), append a "Filed Issues" section to the
+output:
+
+```
+## Filed Issues
+- BLOCKING — <issue ref> — <title>
+- IMPORTANT — <issue ref> — <title>
+- ...
+- Skipped: <count> NIT findings (not filed by policy)
+- Skipped: filing disabled (`--no-file`) | no ## Issue System
+  configured | user declined
+```
+
+If filing failed for any issue (network error, missing labels,
+permission denied), list those separately with the error so the user
+can retry manually.
+
+### Whole-project mode caveat
+
+In whole-project audit mode (`--all`), filing every BLOCKING and
+IMPORTANT finding could create dozens or hundreds of issues. The
+file-count threshold gate (50 files, earlier in this command) already
+forces a pause; reuse that pause to also surface the projected issue
+count. If the user proceeds, still require explicit batch
+confirmation before filing.
 
 ## Reviewer behavior
 
