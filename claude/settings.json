@@ -13,8 +13,9 @@
   },
   "alwaysThinkingEnabled": true,
   "skipDangerousModePermissionPrompt": true,
+  "skipAutoPermissionPrompt": true,
   "feedbackSurveyState": {
     "lastShownTime": 1753986859049
   },
-  "skipAutoPermissionPrompt": true
+  "model": "claude-opus-4-8[1m]"
 }
