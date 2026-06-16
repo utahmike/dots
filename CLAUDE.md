@@ -3,6 +3,12 @@ system. The design artificts for this project will live in the `plan`
 subdirectory. This is where you will write any artifact files not specifically
 tied to code generation.
 
+## Knowledgebase
+
+We share a knowledgebase in the form of an Obsidian vault, found at
+`$OBSIDIAN_VAULT`. Refer to this knowledgebase as the KB or the Vault. Plans
+and notes are to be placed in the KB.
+
 ## Stack
 
 - shell
