@@ -1,0 +1,5 @@
+# Put Cargo/rustup on PATH for ALL zsh invocations, including non-interactive
+# ones (zsh -c ...) that tools/agents use when they shell out. .zshrc only runs
+# for interactive shells, so cargo was missing from non-interactive zsh; .zshenv
+# is sourced for every zsh. Idempotent: .cargo/env no-ops if already on PATH.
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
