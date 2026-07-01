@@ -1,0 +1,54 @@
+# Nord theme for lsd
+# Arctic, north-bluish colorscheme matching nvim/terminal configuration
+# See: https://www.nordtheme.com
+#
+# Polar Night: nord0 #2E3440  nord1 #3B4252  nord2 #434C5E  nord3 #4C566A
+# Snow Storm:  nord4 #D8DEE9  nord5 #E5E9F0  nord6 #ECEFF4
+# Frost:       nord7 #8FBCBB  nord8 #88C0D0  nord9 #81A1C1  nord10 #5E81AC
+# Aurora:      nord11 #BF616A nord12 #D08770 nord13 #EBCB8B nord14 #A3BE8C nord15 #B48EAD
+
+user: "#88C0D0"
+group: "#4C566A"
+
+permission:
+  read: "#A3BE8C"
+  write: "#EBCB8B"
+  exec: "#BF616A"
+  exec-sticky: "#B48EAD"
+  no-access: "#4C566A"
+  octal: "#8FBCBB"
+  acl: "#88C0D0"
+  context: "#81A1C1"
+
+date:
+  hour-old: "#A3BE8C"
+  day-old: "#88C0D0"
+  older: "#5E81AC"
+
+size:
+  none: "#4C566A"
+  small: "#A3BE8C"
+  medium: "#EBCB8B"
+  large: "#D08770"
+
+inode:
+  valid: "#8FBCBB"
+  invalid: "#4C566A"
+
+links:
+  valid: "#8FBCBB"
+  invalid: "#4C566A"
+
+tree-edge: "#4C566A"
+
+git-status:
+  default: "#4C566A"
+  unmodified: "#4C566A"
+  ignored: "#4C566A"
+  new-in-index: "#A3BE8C"
+  new-in-workdir: "#A3BE8C"
+  typechange: "#EBCB8B"
+  deleted: "#BF616A"
+  renamed: "#88C0D0"
+  modified: "#EBCB8B"
+  conflicted: "#BF616A"

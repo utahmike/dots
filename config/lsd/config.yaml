@@ -1,0 +1,12 @@
+# lsd configuration
+# See: https://github.com/lsd-rs/lsd
+
+# Use the custom theme defined in colors.yaml (Nord)
+color:
+  when: auto
+  theme: custom
+
+# Show icons (matches the Nerd Font terminal setup)
+icons:
+  when: auto
+  theme: fancy

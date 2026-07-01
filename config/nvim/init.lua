@@ -1083,14 +1083,13 @@ require("lazy").setup({
 		},
 	},
 
-	{ -- Melange - Warm, dark colorscheme
-		-- A warm, dark color scheme inspired by various retro and vintage themes
-		-- See: https://github.com/savq/melange-nvim
-		"savq/melange-nvim",
+	{ -- Nord - Arctic, north-bluish colorscheme
+		-- See: https://github.com/shaunsingh/nord.nvim
+		"shaunsingh/nord.nvim",
 		priority = 1000, -- Make sure to load this before all the other start plugins.
 		config = function()
 			-- Load the colorscheme here.
-			vim.cmd.colorscheme("melange")
+			vim.cmd.colorscheme("nord")
 		end,
 	},
 

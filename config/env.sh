@@ -69,6 +69,11 @@ export PATH=$PATH:$HOME/bin:$CARGO_HOME/bin:/usr/local/go/bin:$HOME/dev/aspengro
 alias ls='lsd'
 alias ll="ls -lh"
 alias lla="ls -la"
+
+# Nord LS_COLORS - drives file-type/name colors for lsd (and ls/completion).
+# Metadata columns (perms, size, date) come from ~/.config/lsd/colors.yaml.
+# Frost cyan #88C0D0 dirs, green exec, magenta media, dim archives/etc.
+export LS_COLORS="di=38;2;136;192;208:ln=38;2;143;188;187:so=38;2;180;142;173:pi=38;2;235;203;139:ex=38;2;163;190;140:bd=38;2;235;203;139:cd=38;2;235;203;139:su=38;2;191;97;106:sg=38;2;191;97;106:tw=38;2;136;192;208:ow=38;2;136;192;208:or=38;2;191;97;106:mi=38;2;191;97;106:*.tar=38;2;180;142;173:*.tgz=38;2;180;142;173:*.zip=38;2;180;142;173:*.gz=38;2;180;142;173:*.bz2=38;2;180;142;173:*.xz=38;2;180;142;173:*.zst=38;2;180;142;173:*.7z=38;2;180;142;173:*.rar=38;2;180;142;173:*.jpg=38;2;208;135;112:*.jpeg=38;2;208;135;112:*.png=38;2;208;135;112:*.gif=38;2;208;135;112:*.bmp=38;2;208;135;112:*.svg=38;2;208;135;112:*.webp=38;2;208;135;112:*.mp4=38;2;208;135;112:*.mkv=38;2;208;135;112:*.mov=38;2;208;135;112:*.mp3=38;2;208;135;112:*.flac=38;2;208;135;112:*.wav=38;2;208;135;112:*.pdf=38;2;191;97;106:*.md=38;2;236;239;244:*.txt=38;2;216;222;233"
 alias vim=nvim
 alias gupdate='git fetch origin && git rebase --autostash origin/$(git_main_branch)'
 alias awsl='aws ecr get-login-password --profile development --region us-west-2 | docker login --username AWS --password-stdin 273119442198.dkr.ecr.us-west-2.amazonaws.com'
