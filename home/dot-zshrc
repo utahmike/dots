@@ -72,8 +72,8 @@ ZSH_THEME="bira"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
-source $ZSH/oh-my-zsh.sh
-source $HOME/.cargo/env
+[ -f "$ZSH/oh-my-zsh.sh" ] && source "$ZSH/oh-my-zsh.sh"
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 source $HOME/.config/env.sh
 
 # User configuration

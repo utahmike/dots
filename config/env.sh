@@ -43,7 +43,7 @@ Linux)
     ;;
 esac
 
-source $HOME/.cargo/env
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
 if [ -f $HOME/.credentials.sh ]; then
     source $HOME/.credentials.sh
