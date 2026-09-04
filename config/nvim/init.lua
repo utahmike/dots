@@ -419,52 +419,39 @@ require("lazy").setup({
 
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
+		branch = "main",
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		config = function()
-			require("nvim-treesitter.configs").setup({
-				textobjects = {
-					select = {
-						enable = true,
-
-						-- Automatically jump forward to textobj, similar to targets.vim
-						lookahead = true,
-
-						keymaps = {
-							-- You can use the capture groups defined in textobjects.scm
-							["af"] = "@function.outer",
-							["if"] = "@function.inner",
-							["ac"] = "@class.outer",
-							-- You can optionally set descriptions to the mappings (used in the desc parameter of
-							-- nvim_buf_set_keymap) which plugins like which-key display
-							["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
-							-- You can also use captures from other query groups like `locals.scm`
-							["as"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
-						},
-						-- You can choose the select mode (default is charwise 'v')
-						--
-						-- Can also be a function which gets passed a table with the keys
-						-- * query_string: eg '@function.inner'
-						-- * method: eg 'v' or 'o'
-						-- and should return the mode ('v', 'V', or '<c-v>') or a table
-						-- mapping query_strings to modes.
-						selection_modes = {
-							["@parameter.outer"] = "v", -- charwise
-							["@function.outer"] = "V", -- linewise
-							["@class.outer"] = "<c-v>", -- blockwise
-						},
-						-- If you set this to `true` (default is `false`) then any textobject is
-						-- extended to include preceding or succeeding whitespace. Succeeding
-						-- whitespace has priority in order to act similarly to eg the built-in
-						-- `ap`.
-						--
-						-- Can also be a function which gets passed a table with the keys
-						-- * query_string: eg '@function.inner'
-						-- * selection_mode: eg 'v'
-						-- and should return true or false
-						include_surrounding_whitespace = false,
+			require("nvim-treesitter-textobjects").setup({
+				select = {
+					-- Automatically jump forward to textobj, similar to targets.vim
+					lookahead = true,
+					-- Select mode per query (default is charwise 'v').
+					selection_modes = {
+						["@parameter.outer"] = "v", -- charwise
+						["@function.outer"] = "V", -- linewise
+						["@class.outer"] = "<c-v>", -- blockwise
 					},
+					-- If `true`, textobjects are extended to include preceding or
+					-- succeeding whitespace (succeeding has priority, like built-in `ap`).
+					include_surrounding_whitespace = false,
 				},
 			})
+
+			-- On the main branch keymaps are defined explicitly rather than in `setup`.
+			-- Second arg is the query group (`textobjects` or e.g. `locals`).
+			local select = require("nvim-treesitter-textobjects.select")
+			local function map(key, query, group, desc)
+				vim.keymap.set({ "x", "o" }, key, function()
+					select.select_textobject(query, group)
+				end, { desc = desc })
+			end
+			map("af", "@function.outer", "textobjects", "Select outer function")
+			map("if", "@function.inner", "textobjects", "Select inner function")
+			map("ac", "@class.outer", "textobjects", "Select outer class")
+			map("ic", "@class.inner", "textobjects", "Select inner part of a class region")
+			-- Captures from other query groups like `locals.scm`
+			map("as", "@local.scope", "locals", "Select language scope")
 		end,
 	},
 
@@ -1183,40 +1170,48 @@ require("lazy").setup({
 
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
+		branch = "main",
+		lazy = false, -- the main branch does not support lazy-loading
 		build = ":TSUpdate",
 		config = function()
 			-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-			require("nvim-treesitter.configs").setup({
-				ensure_installed = {
-					"bash",
-					"c",
-					"diff",
-					"html",
-					"lua",
-					"luadoc",
-					"markdown",
-					"markdown_inline",
-					"rust",
-					"query",
-					"vim",
-					"vimdoc",
-				},
-				-- Autoinstall languages that are not installed
-				auto_install = true,
-				highlight = {
-					enable = true,
-					-- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-					--  If you are experiencing weird indenting issues, add the language to
-					--  the list of additional_vim_regex_highlighting and disabled languages for indent.
-					additional_vim_regex_highlighting = { "ruby" },
-				},
-				indent = { enable = true, disable = { "ruby" } },
+			-- On the main branch, parsers are installed explicitly and features are
+			-- enabled per-buffer rather than through a central `setup()` call.
+			require("nvim-treesitter").install({
+				"bash",
+				"c",
+				"diff",
+				"html",
+				"lua",
+				"luadoc",
+				"markdown",
+				"markdown_inline",
+				"rust",
+				"query",
+				"vim",
+				"vimdoc",
+			})
+
+			-- Enable treesitter highlighting and indentation for any buffer whose
+			-- filetype has an installed parser.
+			vim.api.nvim_create_autocmd("FileType", {
+				desc = "Enable treesitter highlighting and indentation",
+				group = vim.api.nvim_create_augroup("treesitter-features", { clear = true }),
+				callback = function(args)
+					local filetype = vim.bo[args.buf].filetype
+					local lang = vim.treesitter.language.get_lang(filetype)
+					-- `start` errors when the parser isn't installed (yet); ignore that.
+					if lang and pcall(vim.treesitter.start, args.buf, lang) then
+						-- Ruby's indent rules rely on vim's regex engine, so leave its
+						-- indentexpr alone (matches the old `indent.disable` list).
+						if filetype ~= "ruby" then
+							vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+						end
+					end
+				end,
 			})
 		end,
-		-- There are additional nvim-treesitter modules that you can use to interact
-		-- with nvim-treesitter. You should go explore a few and see what interests you:
-		--
-		--    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
+		-- There are additional nvim-treesitter modules you can explore:
 		--    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
 		--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 	},

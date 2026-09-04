@@ -19,6 +19,9 @@ check-dependencies:
 	@command -v stow >/dev/null 2>&1 || { echo "Error: stow not installed" >&2; exit 1; }
 	@command -v git >/dev/null 2>&1 || { echo "Error: git not installed" >&2; exit 1; }
 	@echo "✓ All required dependencies found"
+	@echo "Checking optional dependencies..."
+	@command -v tree-sitter >/dev/null 2>&1 || echo "  ⊗ tree-sitter (CLI) not installed - needed by Neovim's nvim-treesitter (brew install tree-sitter-cli)" >&2
+	@command -v cc >/dev/null 2>&1 || command -v clang >/dev/null 2>&1 || command -v gcc >/dev/null 2>&1 || echo "  ⊗ C compiler not found - needed to build tree-sitter parsers (xcode-select --install)" >&2
 
 # Backup existing configurations
 backup:
