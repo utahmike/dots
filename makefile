@@ -43,11 +43,17 @@ backup:
 # Install with automatic backup
 install: check-dependencies backup
 	@echo "Installing dotfiles..."
-	@stow -v -t ~/.config config
-	@stow -v -t ~/.claude claude
-	@stow -v -t ~ --dotfiles home
-	@echo ""
-	@echo "✓ Installation complete!"
+	@FAILED=""; \
+	stow -v -t ~/.config config || FAILED="$$FAILED config"; \
+	stow -v -t ~/.claude claude || FAILED="$$FAILED claude"; \
+	stow -v -t ~ --dotfiles home || FAILED="$$FAILED home"; \
+	echo ""; \
+	if [ -n "$$FAILED" ]; then \
+		echo "⚠ Installation finished with errors; these packages failed to stow:$$FAILED" >&2; \
+		echo "  Resolve the conflicts reported above, then re-run 'make install'." >&2; \
+	else \
+		echo "✓ Installation complete!"; \
+	fi
 	@echo ""
 	@echo "Next steps:"
 	@echo "  1. Copy templates/.credentials.sh.template to ~/.credentials.sh"
