@@ -18,5 +18,6 @@
   "skipAutoPermissionPrompt": true,
   "feedbackSurveyState": {
     "lastShownTime": 1753986859049
-  }
+  },
+  "includeCoAuthoredBy": false
 }
