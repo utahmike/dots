@@ -63,20 +63,3 @@ trailing slash meaning directory (recursive). Globs are allowed
 can mix languages, and a language can appear in multiple scopes.
 Define only the scopes that are useful for review and dispatch in
 this project; small repos don't need any.
-
-## Issue system abstraction
-
-When I say "the issue system" (or "file an issue", "open a ticket", "log a bug",
-etc.), use the issue tracker configured for the current repository. Do not
-assume Linear, Beads, GitLab, or GitHub — look at the project-level `CLAUDE.md`
-for an `## Issue System` section that names the tracker type and any
-repo-specific parameters (team, project, labels, etc.).
-
-If the project CLAUDE.md has no `## Issue System` section, ask before creating
-or modifying issues — don't guess.
-
-Dispatch is handled by the `issue-system` skill. After identifying the tracker
-type from the repo CLAUDE.md, read
-`~/.claude/skills/issue-system/adapters/<type>.md` in full and follow its
-recipe verbatim. Do not improvise tracker-specific tool names or CLI flags
-from memory.
