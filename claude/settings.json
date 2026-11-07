@@ -19,5 +19,18 @@
   "feedbackSurveyState": {
     "lastShownTime": 1753986859049
   },
-  "includeCoAuthoredBy": false
+  "includeCoAuthoredBy": false,
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/validate-rust-stop.sh",
+            "timeout": 600
+          }
+        ]
+      }
+    ]
+  }
 }
