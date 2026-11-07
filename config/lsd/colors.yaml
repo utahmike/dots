@@ -1,54 +1,54 @@
-# Nord theme for lsd
-# Arctic, north-bluish colorscheme matching nvim/terminal configuration
-# See: https://www.nordtheme.com
+# Melange theme for lsd
+# Warm, dark colorscheme matching nvim/terminal configuration
+# See: https://github.com/savq/melange-nvim
 #
-# Polar Night: nord0 #2E3440  nord1 #3B4252  nord2 #434C5E  nord3 #4C566A
-# Snow Storm:  nord4 #D8DEE9  nord5 #E5E9F0  nord6 #ECEFF4
-# Frost:       nord7 #8FBCBB  nord8 #88C0D0  nord9 #81A1C1  nord10 #5E81AC
-# Aurora:      nord11 #BF616A nord12 #D08770 nord13 #EBCB8B nord14 #A3BE8C nord15 #B48EAD
+# Base:    bg #292522  black #34302C  selection #403A36  grey #867462
+# Text:    fg #ECE1D7  dim #C1A78E
+# Accents: red #BD8183  green #78997A  yellow #E49B5D  blue #7F91B2
+#          magenta #B380B0  cyan #7B9695  bright-cyan #89B3B6  bright-yellow #EBC06D
 
-user: "#88C0D0"
-group: "#4C566A"
+user: "#89B3B6"
+group: "#867462"
 
 permission:
-  read: "#A3BE8C"
-  write: "#EBCB8B"
-  exec: "#BF616A"
-  exec-sticky: "#B48EAD"
-  no-access: "#4C566A"
-  octal: "#8FBCBB"
-  acl: "#88C0D0"
-  context: "#81A1C1"
+  read: "#78997A"
+  write: "#EBC06D"
+  exec: "#BD8183"
+  exec-sticky: "#B380B0"
+  no-access: "#867462"
+  octal: "#7B9695"
+  acl: "#89B3B6"
+  context: "#7F91B2"
 
 date:
-  hour-old: "#A3BE8C"
-  day-old: "#88C0D0"
-  older: "#5E81AC"
+  hour-old: "#78997A"
+  day-old: "#89B3B6"
+  older: "#7F91B2"
 
 size:
-  none: "#4C566A"
-  small: "#A3BE8C"
-  medium: "#EBCB8B"
-  large: "#D08770"
+  none: "#867462"
+  small: "#78997A"
+  medium: "#EBC06D"
+  large: "#E49B5D"
 
 inode:
-  valid: "#8FBCBB"
-  invalid: "#4C566A"
+  valid: "#7B9695"
+  invalid: "#867462"
 
 links:
-  valid: "#8FBCBB"
-  invalid: "#4C566A"
+  valid: "#7B9695"
+  invalid: "#867462"
 
-tree-edge: "#4C566A"
+tree-edge: "#867462"
 
 git-status:
-  default: "#4C566A"
-  unmodified: "#4C566A"
-  ignored: "#4C566A"
-  new-in-index: "#A3BE8C"
-  new-in-workdir: "#A3BE8C"
-  typechange: "#EBCB8B"
-  deleted: "#BF616A"
-  renamed: "#88C0D0"
-  modified: "#EBCB8B"
-  conflicted: "#BF616A"
+  default: "#867462"
+  unmodified: "#867462"
+  ignored: "#867462"
+  new-in-index: "#78997A"
+  new-in-workdir: "#78997A"
+  typechange: "#EBC06D"
+  deleted: "#BD8183"
+  renamed: "#89B3B6"
+  modified: "#EBC06D"
+  conflicted: "#BD8183"

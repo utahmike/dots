@@ -1,7 +1,7 @@
 # lsd configuration
 # See: https://github.com/lsd-rs/lsd
 
-# Use the custom theme defined in colors.yaml (Nord)
+# Use the custom theme defined in colors.yaml (Melange)
 color:
   when: auto
   theme: custom

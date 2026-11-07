@@ -296,7 +296,7 @@ web_client {
 // Choose the theme that is specified in the themes section.
 // Default: default
 //
-theme "nord"
+theme "melange"
  
 // Choose the base input mode of zellij.
 // Default: normal
@@ -545,126 +545,126 @@ theme "nord"
 // Note: be sure to escape backslashes and similar characters properly
 // post_command_discovery_hook "echo $RESURRECT_COMMAND | sed <your_regex_here>"
 
-// Nord color scheme - matching nvim/terminal colors
-// Arctic, north-bluish colorscheme
-// See: https://www.nordtheme.com
+// Melange color scheme - matching nvim/terminal colors
+// Warm, dark colorscheme with a vintage feel
+// See: https://github.com/savq/melange-nvim
 themes {
-    nord {
+    melange {
         text_unselected {
-            base 216 222 233      // foreground (nord4)
-            background 46 52 64    // background (nord0)
-            emphasis_0 136 192 208 // cyan (nord8)
-            emphasis_1 143 188 187 // teal (nord7)
-            emphasis_2 129 161 193 // blue (nord9)
-            emphasis_3 180 142 173 // magenta (nord15)
+            base 236 225 215      // foreground (#ECE1D7)
+            background 41 37 34    // background (#292522)
+            emphasis_0 228 155 93  // accent/yellow (#E49B5D)
+            emphasis_1 123 150 149 // cyan (#7B9695)
+            emphasis_2 127 145 178 // blue (#7F91B2)
+            emphasis_3 179 128 176 // magenta (#B380B0)
         }
         text_selected {
-            base 236 239 244      // bright fg (nord6)
-            background 59 66 82    // selection bg (nord1)
-            emphasis_0 136 192 208 // cyan (nord8)
-            emphasis_1 163 190 140 // green (nord14)
-            emphasis_2 129 161 193 // blue (nord9)
-            emphasis_3 180 142 173 // magenta (nord15)
+            base 236 225 215      // foreground (#ECE1D7)
+            background 64 58 54    // selection bg (#403A36)
+            emphasis_0 228 155 93  // accent/yellow (#E49B5D)
+            emphasis_1 120 153 122 // green (#78997A)
+            emphasis_2 127 145 178 // blue (#7F91B2)
+            emphasis_3 179 128 176 // magenta (#B380B0)
         }
         ribbon_selected {
-            base 236 239 244      // bright fg (nord6)
-            background 94 129 172  // deep blue (nord10)
-            emphasis_0 136 192 208 // cyan (nord8)
-            emphasis_1 216 222 233 // fg (nord4)
-            emphasis_2 129 161 193 // blue (nord9)
-            emphasis_3 180 142 173 // magenta (nord15)
+            base 236 225 215      // foreground (#ECE1D7)
+            background 228 155 93  // accent/yellow (#E49B5D)
+            emphasis_0 41 37 34    // background (#292522)
+            emphasis_1 236 225 215 // fg (#ECE1D7)
+            emphasis_2 127 145 178 // blue (#7F91B2)
+            emphasis_3 179 128 176 // magenta (#B380B0)
         }
         ribbon_unselected {
-            base 216 222 233      // fg (nord4)
-            background 59 66 82    // black (nord1)
-            emphasis_0 191 97 106  // red (nord11)
-            emphasis_1 236 239 244 // bright fg (nord6)
-            emphasis_2 129 161 193 // blue (nord9)
-            emphasis_3 180 142 173 // magenta (nord15)
+            base 236 225 215      // fg (#ECE1D7)
+            background 64 58 54    // black (#403A36)
+            emphasis_0 189 129 131 // red (#BD8183)
+            emphasis_1 236 225 215 // fg (#ECE1D7)
+            emphasis_2 127 145 178 // blue (#7F91B2)
+            emphasis_3 179 128 176 // magenta (#B380B0)
         }
         table_title {
-            base 216 222 233      // fg (nord4)
+            base 236 225 215      // fg (#ECE1D7)
             background 0 0 0      // transparent
-            emphasis_0 136 192 208 // cyan (nord8)
-            emphasis_1 143 188 187 // teal (nord7)
-            emphasis_2 129 161 193 // blue (nord9)
-            emphasis_3 180 142 173 // magenta (nord15)
+            emphasis_0 228 155 93  // accent/yellow (#E49B5D)
+            emphasis_1 123 150 149 // cyan (#7B9695)
+            emphasis_2 127 145 178 // blue (#7F91B2)
+            emphasis_3 179 128 176 // magenta (#B380B0)
         }
         table_cell_selected {
-            base 236 239 244      // bright fg (nord6)
-            background 59 66 82    // selection bg (nord1)
-            emphasis_0 136 192 208 // cyan (nord8)
-            emphasis_1 143 188 187 // teal (nord7)
-            emphasis_2 129 161 193 // blue (nord9)
-            emphasis_3 180 142 173 // magenta (nord15)
+            base 236 225 215      // foreground (#ECE1D7)
+            background 64 58 54    // selection bg (#403A36)
+            emphasis_0 228 155 93  // accent/yellow (#E49B5D)
+            emphasis_1 123 150 149 // cyan (#7B9695)
+            emphasis_2 127 145 178 // blue (#7F91B2)
+            emphasis_3 179 128 176 // magenta (#B380B0)
         }
         table_cell_unselected {
-            base 216 222 233      // fg (nord4)
-            background 46 52 64    // background (nord0)
-            emphasis_0 136 192 208 // cyan (nord8)
-            emphasis_1 143 188 187 // teal (nord7)
-            emphasis_2 129 161 193 // blue (nord9)
-            emphasis_3 180 142 173 // magenta (nord15)
+            base 236 225 215      // fg (#ECE1D7)
+            background 41 37 34    // background (#292522)
+            emphasis_0 228 155 93  // accent/yellow (#E49B5D)
+            emphasis_1 123 150 149 // cyan (#7B9695)
+            emphasis_2 127 145 178 // blue (#7F91B2)
+            emphasis_3 179 128 176 // magenta (#B380B0)
         }
         list_selected {
-            base 236 239 244      // bright fg (nord6)
-            background 59 66 82    // selection bg (nord1)
-            emphasis_0 136 192 208 // cyan (nord8)
-            emphasis_1 143 188 187 // teal (nord7)
-            emphasis_2 129 161 193 // blue (nord9)
-            emphasis_3 180 142 173 // magenta (nord15)
+            base 236 225 215      // foreground (#ECE1D7)
+            background 64 58 54    // selection bg (#403A36)
+            emphasis_0 228 155 93  // accent/yellow (#E49B5D)
+            emphasis_1 123 150 149 // cyan (#7B9695)
+            emphasis_2 127 145 178 // blue (#7F91B2)
+            emphasis_3 179 128 176 // magenta (#B380B0)
         }
         list_unselected {
-            base 216 222 233      // fg (nord4)
-            background 46 52 64    // background (nord0)
-            emphasis_0 136 192 208 // cyan (nord8)
-            emphasis_1 143 188 187 // teal (nord7)
-            emphasis_2 129 161 193 // blue (nord9)
-            emphasis_3 180 142 173 // magenta (nord15)
+            base 236 225 215      // fg (#ECE1D7)
+            background 41 37 34    // background (#292522)
+            emphasis_0 228 155 93  // accent/yellow (#E49B5D)
+            emphasis_1 123 150 149 // cyan (#7B9695)
+            emphasis_2 127 145 178 // blue (#7F91B2)
+            emphasis_3 179 128 176 // magenta (#B380B0)
         }
         frame_selected {
-            base 216 222 233      // fg (nord4)
+            base 236 225 215      // fg (#ECE1D7)
             background 0 0 0      // transparent
-            emphasis_0 136 192 208 // cyan (nord8)
-            emphasis_1 143 188 187 // teal (nord7)
-            emphasis_2 180 142 173 // magenta (nord15)
+            emphasis_0 228 155 93  // accent/yellow (#E49B5D)
+            emphasis_1 123 150 149 // cyan (#7B9695)
+            emphasis_2 179 128 176 // magenta (#B380B0)
             emphasis_3 0 0 0      // transparent
         }
         frame_highlight {
-            base 136 192 208      // cyan (prominent, nord8)
+            base 228 155 93       // accent/yellow (prominent, #E49B5D)
             background 0 0 0      // transparent
-            emphasis_0 143 188 187 // teal (nord7)
-            emphasis_1 136 192 208 // cyan (nord8)
-            emphasis_2 136 192 208 // cyan (nord8)
-            emphasis_3 136 192 208 // cyan (nord8)
+            emphasis_0 123 150 149 // cyan (#7B9695)
+            emphasis_1 228 155 93  // accent/yellow (#E49B5D)
+            emphasis_2 228 155 93  // accent/yellow (#E49B5D)
+            emphasis_3 228 155 93  // accent/yellow (#E49B5D)
         }
         exit_code_success {
-            base 143 188 187      // teal (nord7)
+            base 120 153 122      // green (#78997A)
             background 0 0 0      // transparent
-            emphasis_0 216 222 233 // fg (nord4)
-            emphasis_1 46 52 64   // bg (nord0)
-            emphasis_2 180 142 173 // magenta (nord15)
-            emphasis_3 129 161 193 // blue (nord9)
+            emphasis_0 236 225 215 // fg (#ECE1D7)
+            emphasis_1 41 37 34   // bg (#292522)
+            emphasis_2 179 128 176 // magenta (#B380B0)
+            emphasis_3 127 145 178 // blue (#7F91B2)
         }
         exit_code_error {
-            base 191 97 106       // red (nord11)
+            base 189 129 131      // red (#BD8183)
             background 0 0 0      // transparent
-            emphasis_0 208 135 112 // orange (nord12)
+            emphasis_0 228 155 93  // orange (#E49B5D)
             emphasis_1 0 0 0      // transparent
             emphasis_2 0 0 0      // transparent
             emphasis_3 0 0 0      // transparent
         }
         multiplayer_user_colors {
-            player_1 191 97 106   // red (nord11)
-            player_2 129 161 193  // blue (nord9)
-            player_3 163 190 140  // green (nord14)
-            player_4 235 203 139  // yellow (nord13)
-            player_5 143 188 187  // teal (nord7)
-            player_6 180 142 173  // magenta (nord15)
-            player_7 208 135 112  // orange (nord12)
-            player_8 136 192 208  // cyan (nord8)
-            player_9 94 129 172   // deep blue (nord10)
-            player_10 94 129 172  // deep blue (nord10)
+            player_1 189 129 131  // red (#BD8183)
+            player_2 127 145 178  // blue (#7F91B2)
+            player_3 120 153 122  // green (#78997A)
+            player_4 235 192 109  // yellow (#EBC06D)
+            player_5 123 150 149  // cyan (#7B9695)
+            player_6 179 128 176  // magenta (#B380B0)
+            player_7 228 155 93   // orange (#E49B5D)
+            player_8 137 179 182  // bright cyan (#89B3B6)
+            player_9 163 169 206  // bright blue (#A3A9CE)
+            player_10 163 169 206 // bright blue (#A3A9CE)
         }
     }
 }

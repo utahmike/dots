@@ -31,6 +31,7 @@ backup:
 	if [ -d ~/.config/nvim ]; then cp -r ~/.config/nvim "$$BACKUP_DIR/nvim" 2>/dev/null || true; fi; \
 	if [ -d ~/.config/alacritty ]; then cp -r ~/.config/alacritty "$$BACKUP_DIR/alacritty" 2>/dev/null || true; fi; \
 	if [ -d ~/.config/wezterm ]; then cp -r ~/.config/wezterm "$$BACKUP_DIR/wezterm" 2>/dev/null || true; fi; \
+	if [ -d ~/.config/ghostty ]; then cp -r ~/.config/ghostty "$$BACKUP_DIR/ghostty" 2>/dev/null || true; fi; \
 	if [ -d ~/.config/tmux ]; then cp -r ~/.config/tmux "$$BACKUP_DIR/tmux" 2>/dev/null || true; fi; \
 	if [ -d ~/.config/zellij ]; then cp -r ~/.config/zellij "$$BACKUP_DIR/zellij" 2>/dev/null || true; fi; \
 	if [ -d ~/.config/btop ]; then cp -r ~/.config/btop "$$BACKUP_DIR/btop" 2>/dev/null || true; fi; \

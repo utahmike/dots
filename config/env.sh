@@ -70,10 +70,10 @@ alias ls='lsd'
 alias ll="ls -lh"
 alias lla="ls -la"
 
-# Nord LS_COLORS - drives file-type/name colors for lsd (and ls/completion).
+# Melange LS_COLORS - drives file-type/name colors for lsd (and ls/completion).
 # Metadata columns (perms, size, date) come from ~/.config/lsd/colors.yaml.
-# Frost cyan #88C0D0 dirs, green exec, magenta media, dim archives/etc.
-export LS_COLORS="di=38;2;136;192;208:ln=38;2;143;188;187:so=38;2;180;142;173:pi=38;2;235;203;139:ex=38;2;163;190;140:bd=38;2;235;203;139:cd=38;2;235;203;139:su=38;2;191;97;106:sg=38;2;191;97;106:tw=38;2;136;192;208:ow=38;2;136;192;208:or=38;2;191;97;106:mi=38;2;191;97;106:*.tar=38;2;180;142;173:*.tgz=38;2;180;142;173:*.zip=38;2;180;142;173:*.gz=38;2;180;142;173:*.bz2=38;2;180;142;173:*.xz=38;2;180;142;173:*.zst=38;2;180;142;173:*.7z=38;2;180;142;173:*.rar=38;2;180;142;173:*.jpg=38;2;208;135;112:*.jpeg=38;2;208;135;112:*.png=38;2;208;135;112:*.gif=38;2;208;135;112:*.bmp=38;2;208;135;112:*.svg=38;2;208;135;112:*.webp=38;2;208;135;112:*.mp4=38;2;208;135;112:*.mkv=38;2;208;135;112:*.mov=38;2;208;135;112:*.mp3=38;2;208;135;112:*.flac=38;2;208;135;112:*.wav=38;2;208;135;112:*.pdf=38;2;191;97;106:*.md=38;2;236;239;244:*.txt=38;2;216;222;233"
+# Warm yellow #E49B5D dirs, green exec, orange media, magenta archives.
+export LS_COLORS="di=38;2;228;155;93:ln=38;2;123;150;149:so=38;2;179;128;176:pi=38;2;235;192;109:ex=38;2;120;153;122:bd=38;2;235;192;109:cd=38;2;235;192;109:su=38;2;189;129;131:sg=38;2;189;129;131:tw=38;2;228;155;93:ow=38;2;228;155;93:or=38;2;189;129;131:mi=38;2;189;129;131:*.tar=38;2;179;128;176:*.tgz=38;2;179;128;176:*.zip=38;2;179;128;176:*.gz=38;2;179;128;176:*.bz2=38;2;179;128;176:*.xz=38;2;179;128;176:*.zst=38;2;179;128;176:*.7z=38;2;179;128;176:*.rar=38;2;179;128;176:*.jpg=38;2;212;119;102:*.jpeg=38;2;212;119;102:*.png=38;2;212;119;102:*.gif=38;2;212;119;102:*.bmp=38;2;212;119;102:*.svg=38;2;212;119;102:*.webp=38;2;212;119;102:*.mp4=38;2;212;119;102:*.mkv=38;2;212;119;102:*.mov=38;2;212;119;102:*.mp3=38;2;212;119;102:*.flac=38;2;212;119;102:*.wav=38;2;212;119;102:*.pdf=38;2;189;129;131:*.md=38;2;236;225;215:*.txt=38;2;236;225;215"
 alias vim=nvim
 alias gupdate='git fetch origin && git rebase --autostash origin/$(git_main_branch)'
 alias awsl='aws ecr get-login-password --profile development --region us-west-2 | docker login --username AWS --password-stdin 273119442198.dkr.ecr.us-west-2.amazonaws.com'
