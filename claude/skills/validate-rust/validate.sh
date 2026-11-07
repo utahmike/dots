@@ -54,7 +54,15 @@ fi
 
 step fmt cargo fmt --all -- --check --color never
 step build cargo build --workspace --all-targets --locked
-step clippy cargo clippy --workspace --all-targets --locked -- -D warnings "${structural[@]}"
+# structural lints are off here (excessive_nesting is on by default once a
+# threshold is configured) and checked on production code in the next step.
+step clippy cargo clippy --workspace --all-targets --locked -- -D warnings \
+    -A clippy::too_many_lines -A clippy::excessive_nesting
+# Length/nesting apply to production code only: --lib/--bins builds without
+# cfg(test), so test modules and tests/ (often long tables) are exempt.
+if ((${#unit[@]})); then
+    step structure cargo clippy --workspace "${unit[@]}" --locked -- -D warnings "${structural[@]}"
+fi
 if ((${#unit[@]})); then
     step test cargo test --workspace "${unit[@]}" --locked
 else

@@ -22,9 +22,10 @@ The script is `validate.sh`, next to this SKILL.md (normally
 Run it from anywhere inside the repo; it `cd`s to the git root (or stays in the
 current directory when there's no git repo).
 
-- **fast**: fmt check → build (all targets) → clippy (`-D warnings`, plus
-  function length ≤ 50 lines and nesting depth via `clippy.toml`) → unit tests
-  (`--lib --bins`). Use after edits, while iterating.
+- **fast**: fmt check → build (all targets) → clippy (`-D warnings`) →
+  structure (function length ≤ 50 lines and nesting depth; production code
+  only, tests are exempt) → unit tests (`--lib --bins`). Use after edits,
+  while iterating.
 - **full**: fast plus integration tests (the `tests/` targets) and the repo's
   `./.validate-extra.sh` if present. Use before a commit, before a PR, or when
   the user asks for a full check.

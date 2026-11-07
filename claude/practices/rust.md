@@ -77,8 +77,11 @@ Apply these when reading, writing, or reviewing Rust code.
 ## Cargo & tooling
 
 - Run `cargo fmt`, `cargo clippy --all-targets`, and `cargo test` before
-  considering a change done. Treat clippy warnings as errors unless
-  explicitly silenced with `#[allow(...)]` + a reason comment.
+  considering a change done. Treat clippy warnings as errors and fix the
+  code. If a lint is genuinely wrong for a piece of code, raise it with the
+  user instead of silencing it; an agreed exception uses
+  `#[expect(lint, reason = "...")]`, which warns once it's no longer needed,
+  rather than `#[allow(...)]`.
 - `cargo check` for fast feedback during iteration; `cargo build` only when
   you actually need the binary.
 - Pin patch versions for binaries (`= "1.2.3"`); allow caret ranges for
