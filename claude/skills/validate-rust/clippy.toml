@@ -1,0 +1,9 @@
+# Default thresholds for validate-rust. Used only when the repo has no
+# clippy.toml / .clippy.toml of its own (a repo's file replaces this one).
+
+# Functions must be no longer than 50 lines (blank and comment lines excluded).
+too-many-lines-threshold = 50
+
+# Prefer early bailout over nesting: two nested blocks inside a function body
+# are fine, a third is flagged.
+excessive-nesting-threshold = 3

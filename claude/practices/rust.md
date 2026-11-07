@@ -14,6 +14,32 @@ Apply these when reading, writing, or reviewing Rust code.
 - `Result<T, E>` over `Option<T>` whenever the failure has a *reason* worth
   conveying. `Option` is for genuinely-absent values, not for errors.
 
+## Function structure
+
+- **Functions are at most 50 lines** (blank and comment lines don't count).
+  When one grows past that, extract named helpers rather than compressing
+  the code. *Enforced by validate-rust:* `clippy::too_many_lines`.
+- **Bail out early instead of nesting.** Handle the error, empty, or
+  not-applicable case first and return, using `?`, `let ... else { return/continue }`,
+  and guard `if`s, so the main path runs at the top indentation level. Two
+  nested blocks inside a function body are the limit. *Enforced by
+  validate-rust:* `clippy::excessive_nesting` (threshold 3).
+- **Write pure functions wherever possible.** Logic takes its inputs as
+  arguments and returns its result; it doesn't read clocks, environment,
+  files, network, or randomness, and it doesn't mutate shared state. That
+  makes it testable without setup. *Not enforced by a tool; checked in review.*
+- **Test every output the types allow.** For functions that return or match
+  on a sum type (`enum`, `Result`, `Option`), write a unit test for each
+  variant the function can produce, and for each input variant it branches
+  on. Table-driven tests keep this compact. *Not enforced by a tool; checked
+  in review.*
+- **Put side effects behind traits.** I/O, time, randomness, and process or
+  environment access go through a trait (`trait Clock`, `trait Store`, ...)
+  that the pure core takes as a parameter or generic. Production code passes
+  the real implementation; tests pass a fake. Where it fits, describe effects
+  as data (an "action" enum the core returns and a thin shell executes)
+  instead of performing them. *Not enforced by a tool; checked in review.*
+
 ## Ownership & borrowing
 
 - Prefer borrows in function parameters: `&str` over `String`, `&[T]` over

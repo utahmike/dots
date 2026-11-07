@@ -13,7 +13,11 @@ step() {
     if out=$("$@" 2>&1); then
         echo "    ok"
     else
-        printf '    FAIL\n%s\n' "$(tail -n 40 <<<"$out")"
+        # Every error headline + location first (a plain tail drops the earliest
+        # ones), then the tail of the output for context.
+        printf '    FAIL\n%s\n    --- last 40 lines ---\n%s\n' \
+            "$(grep -E -A3 '^error' <<<"$out" | grep -E '^error|^ *--> ' | head -n 60)" \
+            "$(tail -n 40 <<<"$out")"
         failures+=("$n")
     fi
 }
@@ -27,6 +31,14 @@ if [[ ! -f Cargo.toml ]]; then
 fi
 
 export CARGO_TERM_COLOR=never RUSTFLAGS="-D warnings"
+
+# Structural lints: function length and nesting depth. Thresholds come from the
+# repo's clippy.toml if it has one, otherwise from the default shipped here.
+SKILL_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
+if [[ -z $(find . -path ./target -prune -o \( -name clippy.toml -o -name .clippy.toml \) -print -quit) ]]; then
+    export CLIPPY_CONF_DIR="$SKILL_DIR"
+fi
+structural=(-D clippy::too_many_lines -D clippy::excessive_nesting)
 
 # cargo errors on --lib / --bins when no selected package has that target kind,
 # so only pass the selectors that exist (binary-only crates are common).
@@ -42,7 +54,7 @@ fi
 
 step fmt cargo fmt --all -- --check --color never
 step build cargo build --workspace --all-targets --locked
-step clippy cargo clippy --workspace --all-targets --locked -- -D warnings
+step clippy cargo clippy --workspace --all-targets --locked -- -D warnings "${structural[@]}"
 if ((${#unit[@]})); then
     step test cargo test --workspace "${unit[@]}" --locked
 else

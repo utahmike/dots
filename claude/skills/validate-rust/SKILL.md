@@ -22,7 +22,8 @@ The script is `validate.sh`, next to this SKILL.md (normally
 Run it from anywhere inside the repo; it `cd`s to the git root (or stays in the
 current directory when there's no git repo).
 
-- **fast**: fmt check → build (all targets) → clippy (`-D warnings`) → unit tests
+- **fast**: fmt check → build (all targets) → clippy (`-D warnings`, plus
+  function length ≤ 50 lines and nesting depth via `clippy.toml`) → unit tests
   (`--lib --bins`). Use after edits, while iterating.
 - **full**: fast plus integration tests (the `tests/` targets) and the repo's
   `./.validate-extra.sh` if present. Use before a commit, before a PR, or when
@@ -53,6 +54,11 @@ command directly to see everything.
   `_`-prefixing used things, or loosening `RUSTFLAGS` — the point of
   `-D warnings` is that warnings are real. If a lint is genuinely wrong for
   this code, stop and ask, explaining why.
+- **too_many_lines / excessive_nesting**: restructure. Extract named helper
+  functions, and turn nested conditionals into early returns (`?`,
+  `let ... else`, guard `if`s). Don't add or edit a `clippy.toml` to raise the
+  thresholds. A repo's own `clippy.toml` replaces the shipped defaults, so that
+  decision belongs to the repo owner, not to a fix.
 - **tests**: work out whether the code or the test is wrong. Don't delete,
   `#[ignore]`, or weaken an assertion just to get green; if the test encodes
   behaviour the user intentionally changed, say so and confirm.
