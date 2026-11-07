@@ -6,6 +6,7 @@ fi
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 
 export OBSIDIAN_VAULT=~/Documents/aspengrove
+export ASPENGROVE=$HOME/dev/aspengrove
 export BIROOT=$HOME/dev/go/src/gitlab.com/zeropw/zero
 
 case $(uname) in
@@ -64,7 +65,7 @@ mkdir -p "$TMUX_TMPDIR"
 #     tmux attach -t default || tmux new -s default
 # fi
 
-export PATH=$PATH:$HOME/bin:$CARGO_HOME/bin:/usr/local/go/bin:$HOME/dev/aspengrove/scripts
+export PATH=$PATH:$HOME/bin:$CARGO_HOME/bin:/usr/local/go/bin:$ASPENGROVE/bin
 
 alias ls='lsd'
 alias ll="ls -lh"
