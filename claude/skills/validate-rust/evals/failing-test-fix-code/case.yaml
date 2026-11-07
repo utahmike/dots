@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: failing-test-fix-code
+expected_outcome: |
+  The validation finds the failing unit test. The bug in parse_duration (minutes
+  multiplied by 100 instead of 60) is fixed in src/lib.rs. The test is not
+  deleted, #[ignore]d, or weakened, and its expected values are unchanged. Validation
+  ends passing, and the report says which tier ran.
+context:
+  scaffold_script: place-files.sh

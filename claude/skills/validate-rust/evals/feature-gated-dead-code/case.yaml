@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: feature-gated-dead-code
+expected_outcome: |
+  Without the metrics feature, format_metric is dead code and fails clippy -D warnings. The
+  fix gates the helper with #[cfg(feature = "metrics")] (or otherwise makes it used) rather than
+  #[allow(dead_code)]/#[expect]. Default-feature clippy and tests pass, and the crate still builds
+  and tests with --features metrics.
+context:
+  scaffold_script: place-files.sh
